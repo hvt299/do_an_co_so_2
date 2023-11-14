@@ -9,7 +9,7 @@
 body {
     height: 100vh !important;
     background-color: #000;
-    background: url('background_coding.png') no-repeat;
+    background: url('images/background_coding.png') no-repeat;
     background-size: cover;
     background-position: center;
     backdrop-filter: brightness(30%);

@@ -45,7 +45,7 @@
             </div>
             <div class="media-options">
                 <a href="#" class="field google">
-                    <img src="google-icon.png" alt="" class="google-img">
+                    <img src="images/google-icon.png" alt="" class="google-img">
                     <span>Login with Google</span>
                 </a>
             </div>
@@ -86,7 +86,7 @@
             </div>
             <div class="media-options">
                 <a href="#" class="field google">
-                    <img src="google-icon.png" alt="" class="google-img">
+                    <img src="images/google-icon.png" alt="" class="google-img">
                     <span>Sign up with Google</span>
                 </a>
             </div>
