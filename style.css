@@ -179,6 +179,17 @@ section#home {
     color: rgb(0, 91, 228) !important;
 }
 
+img.img-item {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 30px;
+}
+
+.f5f6fa-bg-color {
+    background-color: #f5f6fa;
+}
+
 .container-login {
     height: 100vh;
     width: 100%;
@@ -213,7 +224,7 @@ section#home {
     pointer-events: none;
 }
 
-.form-content h1 {
+.form-content h2 {
     color: #232836;
     text-align: center;
 }

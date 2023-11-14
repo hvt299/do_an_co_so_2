@@ -53,7 +53,7 @@
         </section>
         <section>
             <div class="container py-5">
-                <h1 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i> Our Courses</h1>
+                <h2 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i> CÁC KHÓA HỌC CỦA CHÚNG TÔI</h2>
                 <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
                     <div class="col">
                         <div class="card">
@@ -97,6 +97,35 @@
                 </div>
             </div>
         </section>
+
+        <section>
+            <div class="py-5 f5f6fa-bg-color">
+                <h2 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i>NHỮNG VẤN ĐỀ GẶP PHẢI KHI TỰ HỌC LẬP TRÌNH</h1>
+                <div class="row d-flex justify-content-center text-center py-5">
+                    <div class="col-lg-2 col-sm-6">
+                        <img src="lo-trinh.png" class="img-item" alt="">
+                        <p class="card-text">Bạn muốn bắt đầu học lập trình nhưng không biết cần học những kiến thức nào, lộ trình ra sao cho hiệu quả.</p>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <img src="tu-duy.png" class="img-item" alt="">
+                        <p class="card-text">Bạn là sinh viên IT đã từng học lập trình nhưng vẫn chưa có được nền tảng kỹ thuật lập trình vững chắc và tư duy giải quyết bài toán.</p>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <img src="lap-trinh-vien.png" class="img-item" alt="">
+                        <p class="card-text">Bạn là sinh viên các ngành học khác muốn theo ngành IT và muốn trở thành một lập trình viên trong tương lai.</p>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <img src="kho-khan.png" class="img-item" alt="">
+                        <p class="card-text">Bạn gặp khó khăn khi tự học do không có người định hướng, hướng dẫn và kèm cặp dẫn đến chán nản và dễ bỏ cuộc.</p>
+                    </div>
+                    <div class="col-lg-2 col-sm-6">
+                        <img src="hoc-offline.png" class="img-item" alt="">
+                        <p class="card-text">Điều kiện của bạn không cho phép để có thể học lập trình trực tiếp tại các trung tâm ở các thành phố lớn.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="container">
             <footer class="py-5">
                 <div class="row">
