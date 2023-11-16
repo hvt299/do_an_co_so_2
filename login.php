@@ -16,7 +16,7 @@
         <div class="form login">
             <div class="form-content">
                 <h1>Đăng nhập</h1>
-                <form action="#" method="POST">
+                <form action="login_process.php" method="POST">
                     <div class="field input-field">
                         <input type="email" name="email" placeholder="Email" class="input">
                     </div>
