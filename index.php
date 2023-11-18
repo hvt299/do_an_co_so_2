@@ -80,27 +80,28 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
                     <?php foreach ($course_list as $course): ?>
                         <div class="col">
-                            <div class="card">
+                            <div class="card h-100">
                                 <img src="<?php echo $course['HinhAnhKH']; ?>" class="card-img-top" alt="">
                                 <div class="card-body">
-                                    <a href="nav-link"><h5 class="card-title"><?php echo $course['TenKH']; ?></h5></a>
+                                    <a href="#"><h5 class="card-title"><?php echo $course['TenKH']; ?></h5></a>
                                     <p class="card-text">
-                                        <?php echo $course['MoTaKH']; ?><br>
-                                        <center>
+                                        <!-- <?php echo $course['MoTaKH']; ?><br> -->
+                                        <!-- <center> -->
                                         <?php for($i=1;$i<=4;$i++): ?>
                                         <i class="fa-solid fa-star"></i>
                                         <?php endfor; ?>
                                         <i class="fa-regular fa-star"></i>
-                                        </center>
+                                        <!-- </center> -->
                                     </p>
                                 </div>
-                                <div class="d-flex justify-content-around mb-5">
-                                    <h3 class="price"><?php echo number_format($course['GiaHienTaiKH'],0,",",".")." VNĐ"; ?></h3>
-                                    <button class="btn btn-primary">Mua ngay</button>
+                                <div class="d-flex justify-content-around mb-4">
+                                    <h4 class="price"><?php echo number_format($course['GiaHienTaiKH'],0,",",".")."<ins>đ</ins>"; ?></h4>
+                                    <del><?php echo number_format($course['GiaGocKH'],0,",",".")."<ins>đ</ins>"; ?></del>
+                                    <button class="btn btn-primary">Khám phá ngay</button>
                                 </div>
                             </div>
                         </div>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
                     <!-- <div class="col">
                         <div class="card">
                             <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">

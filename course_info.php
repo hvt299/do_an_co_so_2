@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách khóa học | COURSE ONLINE - Bring Course To You!</title>
+    <title>Thông tin khóa học | COURSE ONLINE - Bring Course To You!</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/73d99ea241.js" crossorigin="anonymous"></script>
@@ -76,8 +76,81 @@
 
         <section class="mb-3">
             <div class="container py-5">
-                <h2 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i> CÁC KHÓA HỌC CỦA CHÚNG TÔI</h2>
-                <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+                <h2 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i> THÔNG TIN KHÓA HỌC</h2>
+                <div class="row row-cols-1 row-cols-md-2 g-4 py-5">
+                    <div class="col">
+                        <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">
+                    </div>
+                    <div class="col">
+                        <div class="card-body">
+                        <a href="#" class="card-title"><h2>Khóa học C/C++</h2></a>
+                        <p class="card-text">
+                            <?php for($i=1;$i<=4;$i++): ?>
+                            <i class="fa-solid fa-star"></i>
+                            <?php endfor; ?>
+                            <i class="fa-regular fa-star"></i>
+
+                            <h4 class="card-text mt-2">
+                                <span class="text-primary">159,000 VNĐ</span>
+                                <del>199,000 VNĐ</del>
+                            </h4>
+                            <button class="action_btn" name="add_cart_btn">Thêm vào giỏ hàng</button><br>
+
+                            <hr>
+                            <h3>Giới thiệu khóa học</h3>
+                            Tác giả: Admin<br>
+                            Khóa học lập trình C/C++ từ cơ bản tới nâng cao dành cho người mới bắt đầu. Mục tiêu của khóa học này nhằm giúp các bạn nắm được các khái niệm căn cơ của lập trình, giúp các bạn có nền tảng vững chắc để chinh phục con đường trở thành một lập trình viên.
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <div class="py-5 bg-silver">
+                <h2 class="text-center mb-4">CẢM NHẬN CỦA HỌC VIÊN</h2>
+                <p class="text-center"><i class="fa-solid fa-quote-right fa-beat-fade" style="font-size: 56px;"></i></p>
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner text-center">
+                        <div class="carousel-item active">
+                            <!-- <img src="khoa-hoc-c-c++(1).png" class="d-block w-100" alt="..."> -->
+                            <p>
+                                Hay<br>
+                                Học viên: Nguyễn Văn A
+                            </p>
+                        </div>
+                        <div class="carousel-item">
+                            <p>
+                                Quá Hay<br>
+                                Học viên: Nguyễn Văn B
+                            </p>
+                            <!-- <img src="background_coding.png" class="d-block w-100" alt="..."> -->
+                        </div>
+                        <div class="carousel-item">
+                            <p>
+                                Trên cả tuyệt vời<br>
+                                Học viên: Nguyễn Văn C
+                            </p>
+                            <!-- <img src="background_coding.png" class="d-block w-100" alt="..."> -->
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev bg-dark" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next bg-dark" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-3">
+            <div class="container py-5">
+                <h2 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i> CÁC KHÓA HỌC KHÁC</h2>
+                <div class="row row-cols-1 row-cols-md-3 g-4 py-3">
                     <?php foreach ($course_list as $course): ?>
                         <div class="col">
                             <div class="card h-100">
@@ -102,32 +175,6 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
-                    <!-- <div class="col">
-                        <div class="card">
-                            <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Khóa học lập trình Java</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, maxime?</p>
-                            </div>
-                            <div class="d-flex justify-content-around mb-5">
-                                <h3 class="price">169,000đ</h3>
-                                <button class="btn btn-primary">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Khóa học lập trình Python căn bản</h5>
-                                <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, sint.</p>
-                            </div>
-                            <div class="d-flex justify-content-around mb-5">
-                                <h3 class="price">250,000đ</h3>
-                                <button class="btn btn-primary">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>
