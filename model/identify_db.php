@@ -11,4 +11,18 @@
         $statement->closeCursor();
         return $account;
     }
+
+    function add_account($email, $name, $password) {
+        global $db;
+        $query = 'INSERT INTO taikhoan
+                     (Email, Name, Password)
+                  VALUES
+                     (:email, :name, :password)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':email', $email);
+        $statement->bindValue(':name', $name);
+        $statement->bindValue(':password', $password);
+        $statement->execute();
+        $statement->closeCursor();
+    }
 ?>

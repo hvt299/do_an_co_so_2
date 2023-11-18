@@ -1,6 +1,13 @@
+<?php
+    session_start();
+    require("model/connect_db.php");
+    require("model/menu_db.php");
+    require("model/course_db.php");
+    $menu_list = get_menu();
+    $course_list = get_course();
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,20 +16,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/73d99ea241.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
     <header>
         <div class="navbar">
             <div class="logo"><a href="index.php">COURSE ONLINE</a></div>
             <ul class="links">
-                <li><a href="index.php">Trang chủ</a></li>
-                <li><a href="course_list.php">Khóa học</a></li>
+                <?php foreach ($menu_list as $menu): ?>
+                <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
+                <!-- <li><a href="course_list.php">Khóa học</a></li>
                 <li><a href="#">Giới thiệu</a></li>
-                <li><a href="#">Liên hệ</a></li>
+                <li><a href="#">Liên hệ</a></li> -->
+                <?php endforeach; ?>
             </ul>
             <ul class="links">
-                <li><a href="#" class="cart_btn"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: darkgray;"></i></a></li>
-                <li><a href="login.php" class="action_btn">Đăng nhập</a></li>
+                <?php if (isset($_COOKIE['username'])): ?>
+                    <li><a href="#" class="links"><?php echo $_COOKIE['username']; ?></a></li>
+                    <li><a href="logout.php" class="action_btn">Đăng xuất</a></li>
+                <?php else: ?>
+                    <li><a href="#" class="cart_btn"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: darkgray;"></i></a></li>
+                    <li><a href="login.php" class="action_btn">Đăng nhập</a></li>
+                <?php endif; ?>
             </ul>
             <div class="toggle_btn">
                 <i class="fa-solid fa-bars"></i>
@@ -30,12 +43,19 @@
         </div>
 
         <div class="dropdown_menu">
-            <li><a href="index.php">Trang chủ</a></li>
-            <li><a href="course_list.php">Khóa học</a></li>
+            <?php foreach ($menu_list as $menu): ?>
+            <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
+            <!-- <li><a href="course_list.php">Khóa học</a></li>
             <li><a href="#">Giới thiệu</a></li>
-            <li><a href="#">Liên hệ</a></li>
-            <li><a href="#"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: darkgray;"></i></a></li>
-            <li><a href="login.php" class="action_btn">Đăng nhập</a></li>
+            <li><a href="#">Liên hệ</a></li> -->
+            <?php endforeach; ?>
+            <?php if (isset($_COOKIE['username'])): ?>
+                <li><a href="#" class="links"><?php echo $_COOKIE['username']; ?></a></li>
+                <li><a href="logout.php" class="action_btn">Đăng xuất</a></li>
+            <?php else: ?>
+                <li><a href="#" class="cart_btn"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: darkgray;"></i></a></li>
+                <li><a href="login.php" class="action_btn">Đăng nhập</a></li>
+            <?php endif; ?>
         </div>
     </header>
 
@@ -58,7 +78,30 @@
             <div class="container py-5">
                 <h2 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i> CÁC KHÓA HỌC CỦA CHÚNG TÔI</h2>
                 <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-                    <div class="col">
+                    <?php foreach ($course_list as $course): ?>
+                        <div class="col">
+                            <div class="card">
+                                <img src="<?php echo $course['HinhAnhKH']; ?>" class="card-img-top" alt="">
+                                <div class="card-body">
+                                    <a href="nav-link"><h5 class="card-title"><?php echo $course['TenKH']; ?></h5></a>
+                                    <p class="card-text">
+                                        <?php echo $course['MoTaKH']; ?><br>
+                                        <center>
+                                        <?php for($i=1;$i<=4;$i++): ?>
+                                        <i class="fa-solid fa-star"></i>
+                                        <?php endfor; ?>
+                                        <i class="fa-regular fa-star"></i>
+                                        </center>
+                                    </p>
+                                </div>
+                                <div class="d-flex justify-content-around mb-5">
+                                    <h3 class="price"><?php echo number_format($course['GiaHienTaiKH'],0,",",".")." VNĐ"; ?></h3>
+                                    <button class="btn btn-primary">Mua ngay</button>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    <!-- <div class="col">
                         <div class="card">
                             <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">
                             <div class="card-body">
@@ -96,7 +139,7 @@
                                 <button class="btn btn-primary">Mua ngay</button>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -185,7 +228,7 @@
                         <h5 class="text-primary">Menu</h5>
                         <ul class="nav flex-column">
                             <li class="nav-item mb-2"><a href="index.php" class="nav-link p-0 text-muted">Trang chủ</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Khóa học</a></li>
+                            <li class="nav-item mb-2"><a href="course_list.php" class="nav-link p-0 text-muted">Khóa học</a></li>
                             <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Giới thiệu</a></li>
                             <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Liên hệ</a></li>
                         </ul>

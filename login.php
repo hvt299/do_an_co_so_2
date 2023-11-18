@@ -28,7 +28,7 @@
                         <a href="#" class="forgot-pass">Forget password?</a>
                     </div>
                     <div class="field button-field">
-                        <button>Login</button>
+                        <button name="login">Login</button>
                     </div>
                 </form>
                 <div class="form-link">
@@ -56,9 +56,12 @@
         <div class="form signup">
             <div class="form-content">
                 <h1>Đăng ký</h1>
-                <form action="#" method="POST">
+                <form action="signup_process.php" method="POST">
                     <div class="field input-field">
                         <input type="email" name="email" placeholder="Email" class="input">
+                    </div>
+                    <div class="field input-field">
+                        <input type="text" name="username" placeholder="Username" class="input">
                     </div>
                     <div class="field input-field">
                         <input type="password" name="password" placeholder="Password" class="password">
@@ -69,7 +72,7 @@
                         <i class="fa-solid fa-eye-slash"></i>
                     </div>
                     <div class="field button-field">
-                        <button>Signup</button>
+                        <button name="signup">Signup</button>
                     </div>
                 </form>
                 <div class="form-link">
