@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2023 at 07:38 AM
+-- Generation Time: Nov 19, 2023 at 06:47 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -80,17 +80,18 @@ CREATE TABLE `taikhoan` (
   `Email` varchar(255) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL,
-  `VaiTro` varchar(255) NOT NULL DEFAULT 'Học viên'
+  `VaiTro` varchar(255) NOT NULL DEFAULT 'Học viên',
+  `MatKhauUngDung` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `taikhoan`
 --
 
-INSERT INTO `taikhoan` (`Email`, `Name`, `Password`, `VaiTro`) VALUES
-('huavietthai299@gmail.com', 'Hứa Viết Thái', '123321', 'Học viên'),
-('nguyenvana@gmail.com', 'Nguyễn Văn A', '123abc345', 'Học viên'),
-('nguyenvanb@gmail.com', 'Nguyễn B', '123', 'Học viên');
+INSERT INTO `taikhoan` (`Email`, `Name`, `Password`, `VaiTro`, `MatKhauUngDung`) VALUES
+('huavietthai299@gmail.com', 'Hứa Viết Thái', '123321', 'Học viên', NULL),
+('nguyenvana@gmail.com', 'Nguyễn Văn A', '123abc345', 'Học viên', NULL),
+('nguyenvanb@gmail.com', 'Nguyễn B', '123', 'Học viên', NULL);
 
 --
 -- Indexes for dumped tables
