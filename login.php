@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Trang đăng nhập / đăng ký | COURSE ONLINE - Bring Course To You!</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/73d99ea241.js" crossorigin="anonymous"></script>
@@ -16,7 +16,7 @@
         <div class="form login">
             <div class="form-content">
                 <h1>Đăng nhập</h1>
-                <form action="login_process.php" method="POST">
+                <form action="login_process.php" method="POST" name="login_form">
                     <div class="field input-field">
                         <input type="email" name="email" placeholder="Email" class="input">
                     </div>
@@ -56,7 +56,7 @@
         <div class="form signup">
             <div class="form-content">
                 <h1>Đăng ký</h1>
-                <form action="signup_process.php" method="POST">
+                <form action="signup_process.php" method="POST" name="signup_form">
                     <div class="field input-field">
                         <input type="email" name="email" placeholder="Email" class="input">
                     </div>
