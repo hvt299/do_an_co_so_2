@@ -20,14 +20,17 @@
                     } else {
                         $_SESSION['username'] = $acc['Name'];
                         $_SESSION['vaitro'] = $acc['VaiTro'];
-                        setcookie("username", $_SESSION['username'], time() + 60);
-                        setcookie("vaitro", $_SESSION['vaitro'], time() + 60);
-                        header("Location: index.php");
+                        $_SESSION['matkhauungdung'] = $acc['MatKhauUngDung'];
+                        setcookie("username", $_SESSION['username'], time() + 3600);
+                        setcookie("vaitro", $_SESSION['vaitro'], time() + 3600);
+                        setcookie("matkhauungdung", $_SESSION['matkhauungdung'], time() + 3600);
+                        echo "<script>alert('Đăng nhập thành công!'); location.href='index.php';</script>";
+                        // header("Location: index.php");
                     }
                 }
             }
         } else {
-            echo "<script>alert('Login Failed.'); location.href='login.php';</script>";
+            echo "<script>alert('Đăng nhập thất bại!'); location.href='login.php';</script>";
             // header("Location: login.php");
         }
     }

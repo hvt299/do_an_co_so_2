@@ -1,3 +1,4 @@
+<?php if (!isset($_COOKIE['username'])): ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,3 +100,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<?php else: header("Location: index.php"); ?>
+<?php endif; ?>

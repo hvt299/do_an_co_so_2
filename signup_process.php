@@ -11,9 +11,9 @@
 
         if (!empty($email) && !empty($name) && !empty($password) && !empty($re_password) && ($password == $re_password)){
             add_account($email, $name, $password);
-            echo "<script>alert('Signup Finished.'); location.href='login.php';</script>";
+            echo "<script>alert('Đăng ký thành công!'); location.href='login.php';</script>";
         } else {
-            echo "<script>alert('Signup Failed.'); location.href='login.php';</script>";
+            echo "<script>alert('Đăng ký thất bại!'); location.href='login.php';</script>";
         }
     }
 ?>
