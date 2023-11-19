@@ -5,6 +5,12 @@
     require("model/course_db.php");
     $menu_list = get_menu();
     $course_list = get_course();
+    if (is_null(filter_input(INPUT_GET, 'course_id'))){
+        $course_id = 1;
+    }else{
+        $course_id = filter_input(INPUT_GET, 'course_id');
+    }
+    $course = get_course_by_id($course_id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,31 +84,33 @@
             <div class="container py-5">
                 <h2 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i> THÔNG TIN KHÓA HỌC</h2>
                 <div class="row row-cols-1 row-cols-md-2 g-4 py-5">
-                    <div class="col">
-                        <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">
-                    </div>
-                    <div class="col">
-                        <div class="card-body">
-                        <a href="#" class="card-title"><h2>Khóa học C/C++</h2></a>
-                        <p class="card-text">
-                            <?php for($i=1;$i<=4;$i++): ?>
-                            <i class="fa-solid fa-star"></i>
-                            <?php endfor; ?>
-                            <i class="fa-regular fa-star"></i>
-
-                            <h4 class="card-text mt-2">
-                                <span class="text-primary">159,000 VNĐ</span>
-                                <del>199,000 VNĐ</del>
-                            </h4>
-                            <button class="action_btn" name="add_cart_btn">Thêm vào giỏ hàng</button><br>
-
-                            <hr>
-                            <h3>Giới thiệu khóa học</h3>
-                            Tác giả: Admin<br>
-                            Khóa học lập trình C/C++ từ cơ bản tới nâng cao dành cho người mới bắt đầu. Mục tiêu của khóa học này nhằm giúp các bạn nắm được các khái niệm căn cơ của lập trình, giúp các bạn có nền tảng vững chắc để chinh phục con đường trở thành một lập trình viên.
-                        </p>
+                    <?php foreach($course as $c): ?>
+                        <div class="col">
+                            <img src="<?php echo $c['HinhAnhKH']; ?>" class="card-img-top" alt="">
                         </div>
-                    </div>
+                        <div class="col">
+                            <div class="card-body">
+                            <a href="#" class="card-title"><h2><?php echo $c['TenKH']; ?></h2></a>
+                            <p class="card-text">
+                                <?php for($i=1;$i<=4;$i++): ?>
+                                <i class="fa-solid fa-star"></i>
+                                <?php endfor; ?>
+                                <i class="fa-regular fa-star"></i>
+
+                                <h4 class="card-text mt-2">
+                                    <span class="text-primary"><?php echo number_format($c['GiaHienTaiKH'],0,",",".")."<ins>đ</ins>"; ?></span>
+                                    <del><?php echo number_format($c['GiaGocKH'],0,",",".")."<ins>đ</ins>"; ?></del>
+                                </h4>
+                                <button class="action_btn" name="add_cart_btn">Thêm vào giỏ hàng</button><br>
+
+                                <hr>
+                                <h3>Giới thiệu khóa học</h3>
+                                Tác giả: <?php echo $c['TacGiaKH']; ?><br>
+                                <?php echo $c['MoTaKH']; ?>
+                            </p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </section>
@@ -152,28 +160,31 @@
                 <h2 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i> CÁC KHÓA HỌC KHÁC</h2>
                 <div class="row row-cols-1 row-cols-md-3 g-4 py-3">
                     <?php foreach ($course_list as $course): ?>
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="<?php echo $course['HinhAnhKH']; ?>" class="card-img-top" alt="">
-                                <div class="card-body">
-                                    <a href="#"><h5 class="card-title"><?php echo $course['TenKH']; ?></h5></a>
-                                    <p class="card-text">
-                                        <!-- <?php echo $course['MoTaKH']; ?><br> -->
-                                        <!-- <center> -->
-                                        <?php for($i=1;$i<=4;$i++): ?>
-                                        <i class="fa-solid fa-star"></i>
-                                        <?php endfor; ?>
-                                        <i class="fa-regular fa-star"></i>
-                                        <!-- </center> -->
-                                    </p>
-                                </div>
-                                <div class="d-flex justify-content-around mb-4">
-                                    <h4 class="price"><?php echo number_format($course['GiaHienTaiKH'],0,",",".")."<ins>đ</ins>"; ?></h4>
-                                    <del><?php echo number_format($course['GiaGocKH'],0,",",".")."<ins>đ</ins>"; ?></del>
-                                    <button class="btn btn-primary">Khám phá ngay</button>
+                        <form action="course_info.php" method="GET">
+                            <input type="hidden" name="course_id" value="<?php echo $course['IDKH']; ?>">
+                            <div class="col h-100">
+                                <div class="card h-100">
+                                    <img src="<?php echo $course['HinhAnhKH']; ?>" class="card-img-top" alt="">
+                                    <div class="card-body">
+                                        <a href="course_info.php?course_id=<?php echo $course['IDKH']; ?>"><h5 class="card-title"><?php echo $course['TenKH']; ?></h5></a>
+                                        <p class="card-text">
+                                            <!-- <?php echo $course['MoTaKH']; ?><br> -->
+                                            <!-- <center> -->
+                                            <?php for($i=1;$i<=4;$i++): ?>
+                                            <i class="fa-solid fa-star"></i>
+                                            <?php endfor; ?>
+                                            <i class="fa-regular fa-star"></i>
+                                            <!-- </center> -->
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-around mb-4">
+                                        <h4 class="price"><?php echo number_format($course['GiaHienTaiKH'],0,",",".")."<ins>đ</ins>"; ?></h4>
+                                        <del><?php echo number_format($course['GiaGocKH'],0,",",".")."<ins>đ</ins>"; ?></del>
+                                        <button class="btn btn-primary" type="submit">Khám phá ngay</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -194,10 +205,12 @@
                     <div class="col-2">
                         <h5 class="text-primary">Menu</h5>
                         <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="index.php" class="nav-link p-0 text-muted">Trang chủ</a></li>
-                            <li class="nav-item mb-2"><a href="course_list.php" class="nav-link p-0 text-muted">Khóa học</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Giới thiệu</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Liên hệ</a></li>
+                            <?php foreach ($menu_list as $menu) : ?>
+                                <li class="nav-item mb-2"><a href="<?php echo $menu['URLMenu']; ?>" class="nav-link p-0 text-muted"><?php echo $menu['TenMenu']; ?></a></li>
+                                <!-- <li class="nav-item mb-2"><a href="course_list.php" class="nav-link p-0 text-muted">Khóa học</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Giới thiệu</a></li>
+                                <li class="nav-item mb-2"><a href="contact.php" class="nav-link p-0 text-muted">Liên hệ</a></li> -->
+                            <?php endforeach; ?>
                         </ul>
                     </div>
 

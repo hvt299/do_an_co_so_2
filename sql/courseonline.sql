@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2023 at 09:28 AM
+-- Generation Time: Nov 19, 2023 at 07:38 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -67,8 +67,8 @@ CREATE TABLE `menu` (
 INSERT INTO `menu` (`IDMenu`, `TenMenu`, `URLMenu`) VALUES
 (1, 'Trang chủ', 'index.php'),
 (2, 'Khóa học', 'course_list.php'),
-(3, 'Giới thiệu', '#'),
-(4, 'Liên hệ', '#');
+(3, 'Giới thiệu', 'about.php'),
+(4, 'Liên hệ', 'contact.php');
 
 -- --------------------------------------------------------
 

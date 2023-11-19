@@ -79,28 +79,31 @@
                 <h2 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i> CÁC KHÓA HỌC CỦA CHÚNG TÔI</h2>
                 <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
                     <?php foreach ($course_list as $course): ?>
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="<?php echo $course['HinhAnhKH']; ?>" class="card-img-top" alt="">
-                                <div class="card-body">
-                                    <a href="#"><h5 class="card-title"><?php echo $course['TenKH']; ?></h5></a>
-                                    <p class="card-text">
-                                        <!-- <?php echo $course['MoTaKH']; ?><br> -->
-                                        <!-- <center> -->
-                                        <?php for($i=1;$i<=4;$i++): ?>
-                                        <i class="fa-solid fa-star"></i>
-                                        <?php endfor; ?>
-                                        <i class="fa-regular fa-star"></i>
-                                        <!-- </center> -->
-                                    </p>
-                                </div>
-                                <div class="d-flex justify-content-around mb-4">
-                                    <h4 class="price"><?php echo number_format($course['GiaHienTaiKH'],0,",",".")."<ins>đ</ins>"; ?></h4>
-                                    <del><?php echo number_format($course['GiaGocKH'],0,",",".")."<ins>đ</ins>"; ?></del>
-                                    <button class="btn btn-primary">Khám phá ngay</button>
+                        <form action="course_info.php" method="GET">
+                            <input type="hidden" name="course_id" value="<?php echo $course['IDKH']; ?>">
+                            <div class="col h-100">
+                                <div class="card h-100">
+                                    <img src="<?php echo $course['HinhAnhKH']; ?>" class="card-img-top" alt="">
+                                    <div class="card-body">
+                                        <a href="course_info.php?course_id=<?php echo $course['IDKH']; ?>"><h5 class="card-title"><?php echo $course['TenKH']; ?></h5></a>
+                                        <p class="card-text">
+                                            <!-- <?php echo $course['MoTaKH']; ?><br> -->
+                                            <!-- <center> -->
+                                            <?php for($i=1;$i<=4;$i++): ?>
+                                            <i class="fa-solid fa-star"></i>
+                                            <?php endfor; ?>
+                                            <i class="fa-regular fa-star"></i>
+                                            <!-- </center> -->
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-around mb-4">
+                                        <h4 class="price"><?php echo number_format($course['GiaHienTaiKH'],0,",",".")."<ins>đ</ins>"; ?></h4>
+                                        <del><?php echo number_format($course['GiaGocKH'],0,",",".")."<ins>đ</ins>"; ?></del>
+                                        <button class="btn btn-primary" type="submit">Khám phá ngay</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     <?php endforeach; ?>
                     <!-- <div class="col">
                         <div class="card">
@@ -228,10 +231,12 @@
                     <div class="col-2">
                         <h5 class="text-primary">Menu</h5>
                         <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="index.php" class="nav-link p-0 text-muted">Trang chủ</a></li>
-                            <li class="nav-item mb-2"><a href="course_list.php" class="nav-link p-0 text-muted">Khóa học</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Giới thiệu</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Liên hệ</a></li>
+                            <?php foreach ($menu_list as $menu) : ?>
+                                <li class="nav-item mb-2"><a href="<?php echo $menu['URLMenu']; ?>" class="nav-link p-0 text-muted"><?php echo $menu['TenMenu']; ?></a></li>
+                                <!-- <li class="nav-item mb-2"><a href="course_list.php" class="nav-link p-0 text-muted">Khóa học</a></li>
+                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Giới thiệu</a></li>
+                                <li class="nav-item mb-2"><a href="contact.php" class="nav-link p-0 text-muted">Liên hệ</a></li> -->
+                            <?php endforeach; ?>
                         </ul>
                     </div>
 
