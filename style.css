@@ -262,6 +262,10 @@ section#home {
     border: 4px solid royalblue;
 }
 
+.card-content {
+    text-align: center;
+}
+
 .card-content .name {
     font-size: 18px;
     font-weight: 500;
@@ -271,7 +275,6 @@ section#home {
 .card-content .description {
     font-size: 14px;
     color: #707070;
-    text-align: center;
 }
 
 img.img-item {

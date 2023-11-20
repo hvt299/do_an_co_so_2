@@ -3,8 +3,10 @@
     require("model/connect_db.php");
     require("model/menu_db.php");
     require("model/course_db.php");
+    require("model/rating_db.php");
     $menu_list = get_menu();
     $course_list = get_course();
+    $rating_list = get_rating();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -179,29 +181,43 @@
 
         <section class="mb-3">
             <div class="py-5">
-                <h2 class="text-center"><i class="fa-solid fa-brain" style="font-size: 36px;"></i> CẢM NHẬN CỦA HỌC VIÊN</h2>
+                <h2 class="text-center"><i class="fa-solid fa-quote-left" style="font-size: 36px;"></i> CẢM NHẬN CỦA HỌC VIÊN</h2>
                 <div class="wrapper">
                     <div class="slide-container">
-                        <div class="slide-content swiper mySwiper">
+                        <div class="slide-content swiper mySwiper pb-1">
                             <div class="card-wrapper swiper-wrapper">
-                                <div class="card card-rating swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay">
+                                <?php foreach ($rating_list as $rating): ?>
+                                    <div class="card card-rating swiper-slide">
+                                        <div class="image-content">
+                                            <span class="overlay">
 
-                                        </span>
-                                        <div class="card-image">
-                                            <img src="images/lap-trinh-vien.png" alt="" class="card-img">
+                                            </span>
+                                            <div class="card-image">
+                                                <img src="images/lap-trinh-vien.png" alt="" class="card-img">
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <h2 class="name">
+                                                <?php
+                                                    echo $rating['TenHV'];
+                                                    echo "<br>";
+                                                    echo $rating['TenKH'];
+                                                ?>
+                                            </h2>
+                                            <p class="description">
+                                                <?php for ($i = 1; $i <= $rating['SaoDG']; $i++): ?>
+                                                    <i class="fa-solid fa-star"></i>
+                                                <?php endfor; ?>
+                                                <?php for ($i = 1; $i <= 5 - $rating['SaoDG']; $i++): ?>
+                                                    <i class="fa-regular fa-star"></i>
+                                                <?php endfor; ?>
+                                                <br>
+                                                <?php echo $rating['NoiDungDG']; ?>
+                                            </p>
                                         </div>
                                     </div>
-                                    <div class="card-content">
-                                        <h2 class="name">Nguyễn Văn A</h2>
-                                        <p class="description">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quis facere temporibus iste ex, molestiae delectus commodi laborum impedit suscipit?
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="card card-rating swiper-slide">
+                                <?php endforeach; ?>
+                                <!-- <div class="card card-rating swiper-slide">
                                     <div class="image-content">
                                         <span class="overlay">
 
@@ -216,58 +232,7 @@
                                             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quis facere temporibus iste ex, molestiae delectus commodi laborum impedit suscipit?
                                         </p>
                                     </div>
-                                </div>
-
-                                <div class="card card-rating swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay">
-
-                                        </span>
-                                        <div class="card-image">
-                                            <img src="images/lap-trinh-vien.png" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">Nguyễn Văn C</h2>
-                                        <p class="description">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quis facere temporibus iste ex, molestiae delectus commodi laborum impedit suscipit?
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                                <div class="card card-rating swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay">
-
-                                        </span>
-                                        <div class="card-image">
-                                            <img src="images/lap-trinh-vien.png" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">Nguyễn Thị A</h2>
-                                        <p class="description">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quis facere temporibus iste ex, molestiae delectus commodi laborum impedit suscipit?
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="card card-rating swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay">
-
-                                        </span>
-                                        <div class="card-image">
-                                            <img src="images/lap-trinh-vien.png" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">Nguyễn Thị B</h2>
-                                        <p class="description">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quis facere temporibus iste ex, molestiae delectus commodi laborum impedit suscipit?
-                                        </p>
-                                    </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
