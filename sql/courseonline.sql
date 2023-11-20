@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2023 at 06:47 PM
+-- Generation Time: Nov 20, 2023 at 01:57 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,54 @@ SET time_zone = "+00:00";
 --
 -- Database: `courseonline`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `danhgia`
+--
+
+CREATE TABLE `danhgia` (
+  `IDDG` int(11) NOT NULL,
+  `IDHV` int(11) NOT NULL,
+  `IDKH` int(11) NOT NULL,
+  `NoiDungDG` text NOT NULL,
+  `SaoDG` tinyint(5) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `danhgia`
+--
+
+INSERT INTO `danhgia` (`IDDG`, `IDHV`, `IDKH`, `NoiDungDG`, `SaoDG`) VALUES
+(1, 1, 1, 'Khóa học C/C++ từ cơ bản đến nâng cao là một chương trình học tuyệt vời để nắm vững hai ngôn ngữ lập trình quan trọng này. Khóa học cung cấp một hành trình học tập đầy đủ, bắt đầu từ những khái niệm căn bản như biến và cú pháp, sau đó tiến tới các chủ đề phức tạp như con trỏ và lập trình hướng đối tượng.', 5),
+(2, 2, 2, 'Khóa học cung cấp một sự kết hợp tốt giữa lý thuyết và thực hành. Học viên không chỉ học các khái niệm trên giấy mà còn có cơ hội thực hành thông qua các bài tập và dự án thực tế. Điều này giúp học viên áp dụng kiến thức vào thực tế và phát triển kỹ năng lập trình thực tế.', 4),
+(3, 3, 3, 'Khóa học Python là một khóa học đáng giá cho những ai muốn nắm vững ngôn ngữ lập trình Python. Với nội dung phong phú, môi trường thực hành tốt, giảng viên chuyên nghiệp và tính linh hoạt trong học tập, khóa học này cung cấp một cơ hội tuyệt vời để học viên phát triển kỹ năng lập trình Python và áp dụng kiến thức vào các dự án thực tế.', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hocvien`
+--
+
+CREATE TABLE `hocvien` (
+  `IDHV` int(11) NOT NULL,
+  `TenHV` varchar(255) NOT NULL,
+  `GioiTinh` varchar(255) DEFAULT NULL,
+  `NgaySinh` date DEFAULT NULL,
+  `QueQuan` varchar(255) DEFAULT NULL,
+  `Email` varchar(255) NOT NULL,
+  `SDT` varchar(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `hocvien`
+--
+
+INSERT INTO `hocvien` (`IDHV`, `TenHV`, `GioiTinh`, `NgaySinh`, `QueQuan`, `Email`, `SDT`) VALUES
+(1, 'Nguyễn Văn A', 'Nam', '2004-01-01', 'Đà Nẵng', 'nguyenvana@gmail.com', NULL),
+(2, 'Nguyễn B', 'Nam', '2004-07-21', 'Quảng Nam', 'nguyenvanb@gmail.com', NULL),
+(3, 'Hứa Thái', 'Nam', '2004-09-29', 'Quảng Nam', 'huavietthai299@gmail.com', '0766747419');
 
 -- --------------------------------------------------------
 
@@ -98,6 +146,21 @@ INSERT INTO `taikhoan` (`Email`, `Name`, `Password`, `VaiTro`, `MatKhauUngDung`)
 --
 
 --
+-- Indexes for table `danhgia`
+--
+ALTER TABLE `danhgia`
+  ADD PRIMARY KEY (`IDDG`),
+  ADD KEY `FK_hocvien_danhgia_idhv` (`IDHV`),
+  ADD KEY `FK_khoahoc_danhgia_idkh` (`IDKH`);
+
+--
+-- Indexes for table `hocvien`
+--
+ALTER TABLE `hocvien`
+  ADD PRIMARY KEY (`IDHV`),
+  ADD KEY `FK_taikhoan_hocvien_email` (`Email`);
+
+--
 -- Indexes for table `khoahoc`
 --
 ALTER TABLE `khoahoc`
@@ -120,6 +183,18 @@ ALTER TABLE `taikhoan`
 --
 
 --
+-- AUTO_INCREMENT for table `danhgia`
+--
+ALTER TABLE `danhgia`
+  MODIFY `IDDG` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `hocvien`
+--
+ALTER TABLE `hocvien`
+  MODIFY `IDHV` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `khoahoc`
 --
 ALTER TABLE `khoahoc`
@@ -130,6 +205,23 @@ ALTER TABLE `khoahoc`
 --
 ALTER TABLE `menu`
   MODIFY `IDMenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `danhgia`
+--
+ALTER TABLE `danhgia`
+  ADD CONSTRAINT `FK_hocvien_danhgia_idhv` FOREIGN KEY (`IDHV`) REFERENCES `hocvien` (`IDHV`),
+  ADD CONSTRAINT `FK_khoahoc_danhgia_idkh` FOREIGN KEY (`IDKH`) REFERENCES `khoahoc` (`IDKH`);
+
+--
+-- Constraints for table `hocvien`
+--
+ALTER TABLE `hocvien`
+  ADD CONSTRAINT `FK_taikhoan_hocvien_email` FOREIGN KEY (`Email`) REFERENCES `taikhoan` (`Email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
