@@ -14,6 +14,7 @@
     <title>COURSE ONLINE - Bring Course To You!</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11.0.4/swiper-bundle.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/73d99ea241.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -177,41 +178,100 @@
         </section>
 
         <section class="mb-3">
-            <div class="py-5 bg-silver">
-                <h2 class="text-center mb-4">CẢM NHẬN CỦA HỌC VIÊN</h2>
-                <p class="text-center"><i class="fa-solid fa-quote-right fa-beat-fade" style="font-size: 56px;"></i></p>
-                <div id="carouselExample" class="carousel slide">
-                    <div class="carousel-inner text-center">
-                        <div class="carousel-item active">
-                            <!-- <img src="khoa-hoc-c-c++(1).png" class="d-block w-100" alt="..."> -->
-                            <p>
-                                Hay<br>
-                                Học viên: Nguyễn Văn A
-                            </p>
-                        </div>
-                        <div class="carousel-item">
-                            <p>
-                                Quá Hay<br>
-                                Học viên: Nguyễn Văn B
-                            </p>
-                            <!-- <img src="background_coding.png" class="d-block w-100" alt="..."> -->
-                        </div>
-                        <div class="carousel-item">
-                            <p>
-                                Trên cả tuyệt vời<br>
-                                Học viên: Nguyễn Văn C
-                            </p>
-                            <!-- <img src="background_coding.png" class="d-block w-100" alt="..."> -->
+            <div class="py-5">
+                <h2 class="text-center"><i class="fa-solid fa-brain" style="font-size: 36px;"></i> CẢM NHẬN CỦA HỌC VIÊN</h2>
+                <div class="wrapper">
+                    <div class="slide-container">
+                        <div class="slide-content swiper mySwiper">
+                            <div class="card-wrapper swiper-wrapper">
+                                <div class="card card-rating swiper-slide">
+                                    <div class="image-content">
+                                        <span class="overlay">
+
+                                        </span>
+                                        <div class="card-image">
+                                            <img src="images/lap-trinh-vien.png" alt="" class="card-img">
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h2 class="name">Nguyễn Văn A</h2>
+                                        <p class="description">
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quis facere temporibus iste ex, molestiae delectus commodi laborum impedit suscipit?
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="card card-rating swiper-slide">
+                                    <div class="image-content">
+                                        <span class="overlay">
+
+                                        </span>
+                                        <div class="card-image">
+                                            <img src="images/lap-trinh-vien.png" alt="" class="card-img">
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h2 class="name">Nguyễn Văn B</h2>
+                                        <p class="description">
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quis facere temporibus iste ex, molestiae delectus commodi laborum impedit suscipit?
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="card card-rating swiper-slide">
+                                    <div class="image-content">
+                                        <span class="overlay">
+
+                                        </span>
+                                        <div class="card-image">
+                                            <img src="images/lap-trinh-vien.png" alt="" class="card-img">
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h2 class="name">Nguyễn Văn C</h2>
+                                        <p class="description">
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quis facere temporibus iste ex, molestiae delectus commodi laborum impedit suscipit?
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="card card-rating swiper-slide">
+                                    <div class="image-content">
+                                        <span class="overlay">
+
+                                        </span>
+                                        <div class="card-image">
+                                            <img src="images/lap-trinh-vien.png" alt="" class="card-img">
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h2 class="name">Nguyễn Thị A</h2>
+                                        <p class="description">
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quis facere temporibus iste ex, molestiae delectus commodi laborum impedit suscipit?
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="card card-rating swiper-slide">
+                                    <div class="image-content">
+                                        <span class="overlay">
+
+                                        </span>
+                                        <div class="card-image">
+                                            <img src="images/lap-trinh-vien.png" alt="" class="card-img">
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <h2 class="name">Nguyễn Thị B</h2>
+                                        <p class="description">
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quis facere temporibus iste ex, molestiae delectus commodi laborum impedit suscipit?
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev bg-dark" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next bg-dark" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    <!-- <div class="swiper-pagination"></div> -->
                 </div>
             </div>
         </section>
@@ -284,7 +344,19 @@
                 'fa-solid fa-bars'
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11.0.4/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper
+        var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>

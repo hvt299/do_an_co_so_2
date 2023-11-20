@@ -156,9 +156,15 @@ section#home {
 }
 
 .card {
-    border-radius: 30px;
+    border-radius: 30px !important;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
     /* min-height: 360px; */
+}
+
+.card-rating {
+    /* width: 320px; */
+    border-radius: 25px;
+    background-color: #fff;
 }
 
 .card-body {
@@ -177,6 +183,95 @@ section#home {
 
 .card-title, .price {
     color: rgb(0, 91, 228) !important;
+}
+
+.wrapper {
+    width: 100%;
+    /* min-height: 100vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: azure; */
+}
+
+.slide-container {
+    max-width: 1120px;
+    width: 100%;
+    /* background-color: red; */
+    padding: 40px 0;
+}
+
+.slide-content {
+    margin: 0 40px;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.image-content, .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px;
+}
+
+.image-content {
+    position: relative;
+    row-gap: 5px;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #4070f4;
+    left: 0;
+    top: 0;
+    border-radius: 25px 25px 0 25px;
+}
+
+.overlay::before,
+.overlay::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 0;
+    bottom: -40px;
+    background-color: #4070f4;
+}
+
+.overlay::after {
+    border-radius: 0 25px 0 0;
+    background-color: #fff;
+}
+
+.card-image {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.card-image .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid royalblue;
+}
+
+.card-content .name {
+    font-size: 18px;
+    font-weight: 500;
+    color: slategray;
+}
+
+.card-content .description {
+    font-size: 14px;
+    color: #707070;
+    text-align: center;
 }
 
 img.img-item {
