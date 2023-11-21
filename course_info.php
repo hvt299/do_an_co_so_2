@@ -97,10 +97,23 @@
                             <div class="card-body">
                             <a href="#" class="card-title"><h2><?php echo $c['TenKH']; ?></h2></a>
                             <p class="card-text">
-                                <?php for ($i = 1; $i <= 4; $i++): ?>
-                                    <i class="fa-solid fa-star"></i>
-                                <?php endfor; ?>
-                                    <i class="fa-regular fa-star"></i>
+                            <?php
+                                                $avg_star_rating = get_avg_star_rating_by_course_id(filter_input(INPUT_GET, "course_id"));
+                                                if (!empty($avg_star_rating)) {
+                                                    foreach ($avg_star_rating as $avg){
+                                                        $avg_star_rating = $avg['avg_star_rating'];
+                                                    }
+                                                    $avg_star_rating = round($avg_star_rating);
+                                                }else {
+                                                    $avg_star_rating = 0;
+                                                }
+                                            ?>
+                                            <?php for ($i = 1; $i <= $avg_star_rating; $i++): ?>
+                                            <i class="fa-solid fa-star"></i>
+                                            <?php endfor; ?>
+                                            <?php for ($i = 1; $i <= 5 - $avg_star_rating; $i++): ?>
+                                            <i class="fa-regular fa-star"></i>
+                                            <?php endfor; ?>
 
                                 <h4 class="card-text mt-2">
                                     <span class="text-primary"><?php echo number_format($c['GiaHienTaiKH'],0,",",".")."<ins>đ</ins>"; ?></span>
@@ -197,10 +210,23 @@
                                         <p class="card-text">
                                             <!-- <?php echo $course['MoTaKH']; ?><br> -->
                                             <!-- <center> -->
-                                            <?php for($i=1;$i<=4;$i++): ?>
+                                            <?php
+                                                $avg_star_rating = get_avg_star_rating_by_course_id($course['IDKH']);
+                                                if (!empty($avg_star_rating)) {
+                                                    foreach ($avg_star_rating as $avg){
+                                                        $avg_star_rating = $avg['avg_star_rating'];
+                                                    }
+                                                    $avg_star_rating = round($avg_star_rating);
+                                                }else {
+                                                    $avg_star_rating = 0;
+                                                }
+                                            ?>
+                                            <?php for ($i = 1; $i <= $avg_star_rating; $i++): ?>
                                             <i class="fa-solid fa-star"></i>
                                             <?php endfor; ?>
+                                            <?php for ($i = 1; $i <= 5 - $avg_star_rating; $i++): ?>
                                             <i class="fa-regular fa-star"></i>
+                                            <?php endfor; ?>
                                             <!-- </center> -->
                                         </p>
                                     </div>

@@ -25,4 +25,18 @@
         $statement->closeCursor();
         return $ratings;
     }
+
+    function get_avg_star_rating_by_course_id($course_id) {
+        global $db;
+        $query = 'SELECT AVG(danhgia.SaoDG) AS avg_star_rating
+                  FROM danhgia
+                  WHERE IDKH = :idkh
+                  GROUP BY danhgia.IDKH;';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':idkh', $course_id);
+        $statement->execute();
+        $avg_star_rating = $statement->fetchAll();
+        $statement->closeCursor();
+        return $avg_star_rating;       
+    }
 ?>
