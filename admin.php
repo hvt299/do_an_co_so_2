@@ -129,7 +129,10 @@
         </div>
 
         <div class="tabular--wrapper">
-            <h3 class="main--title">Finance data</h3>
+            <h3 class="main--title">
+                Finance data
+                <button class="btn btn-primary">Add</button>
+            </h3>
             <div class="table-container">
                 <table>
                     <thead>
