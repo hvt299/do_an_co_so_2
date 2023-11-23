@@ -216,3 +216,100 @@ body {
     letter-spacing: 2px;
     font-family: 'Courier New', Courier, monospace;
 }
+
+/* Color CSS */
+.light-red {
+    background: rgb(251, 233, 233);
+}
+
+.light-purple {
+    background: rgb(254, 226, 254);
+}
+
+.light-green {
+    background: rgb(235, 254, 235);
+}
+
+.light-blue {
+    background: rgb(236, 236, 254);
+}
+
+.dark-red {
+    background: red;
+}
+
+.dark-purple {
+    background: purple;
+}
+
+.dark-green {
+    background: green;
+}
+
+.dark-blue {
+    background: blue;
+}
+
+/* Tabular section */
+.tabular--wrapper {
+    background: #fff;
+    margin-top: 1rem;
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.table-container {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #00A3FF;
+    color: #fff;
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+}
+
+tbody {
+    background: #f2f2f2;
+}
+
+td {
+    padding: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background: #fff;
+}
+
+tfoot {
+    background: #0059ff;
+    font-weight: bold;
+    color: #fff;
+}
+
+tfoot td {
+    padding: 15px;
+    color: #fff;
+}
+
+.table-container button.edit {
+    color: green;
+    background: none;
+    cursor: pointer;
+}
+
+.table-container button.delete {
+    color: red;
+    background: none;
+    cursor: pointer;
+}
