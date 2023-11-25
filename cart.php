@@ -1,18 +1,15 @@
 <?php
     session_start();
-    require("model/connect_db.php");
+    require('model/connect_db.php');
     require("model/menu_db.php");
-    require("model/course_db.php");
-    require("model/rating_db.php");
     $menu_list = get_menu();
-    $course_list = get_course();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách khóa học | COURSE ONLINE - Bring Course To You!</title>
+    <title>Giỏ hàng | COURSE ONLINE - Bring Course To You!</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/73d99ea241.js" crossorigin="anonymous"></script>
@@ -22,18 +19,15 @@
         <div class="navbar">
             <div class="logo"><a href="index.php">COURSE ONLINE</a></div>
             <ul class="links">
-                <?php foreach ($menu_list as $menu): ?>
-                <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
-                <!-- <li><a href="course_list.php">Khóa học</a></li>
-                <li><a href="#">Giới thiệu</a></li>
-                <li><a href="#">Liên hệ</a></li> -->
+                <?php foreach ($menu_list as $menu) : ?>
+                    <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
                 <?php endforeach; ?>
             </ul>
             <ul class="links">
-                <?php if (isset($_COOKIE['username'])): ?>
+                <?php if (isset($_COOKIE['username'])) : ?>
                     <li><a href="#" class="links"><?php echo $_COOKIE['username']; ?></a></li>
                     <li><a href="logout.php" class="action_btn">Đăng xuất</a></li>
-                <?php else: ?>
+                <?php else : ?>
                     <li><a href="#" class="cart_btn"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: darkgray;"></i></a></li>
                     <li><a href="login.php" class="action_btn">Đăng nhập</a></li>
                 <?php endif; ?>
@@ -44,16 +38,13 @@
         </div>
 
         <div class="dropdown_menu">
-            <?php foreach ($menu_list as $menu): ?>
-            <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
-            <!-- <li><a href="course_list.php">Khóa học</a></li>
-            <li><a href="#">Giới thiệu</a></li>
-            <li><a href="#">Liên hệ</a></li> -->
+            <?php foreach ($menu_list as $menu) : ?>
+                <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
             <?php endforeach; ?>
-            <?php if (isset($_COOKIE['username'])): ?>
+            <?php if (isset($_COOKIE['username'])) : ?>
                 <li><a href="#" class="links"><?php echo $_COOKIE['username']; ?></a></li>
                 <li><a href="logout.php" class="action_btn">Đăng xuất</a></li>
-            <?php else: ?>
+            <?php else : ?>
                 <li><a href="#" class="cart_btn"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: darkgray;"></i></a></li>
                 <li><a href="login.php" class="action_btn">Đăng nhập</a></li>
             <?php endif; ?>
@@ -77,74 +68,55 @@
 
         <section class="mb-3">
             <div class="container py-5">
-                <h2 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i> CÁC KHÓA HỌC CỦA CHÚNG TÔI</h2>
-                <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-                    <?php foreach ($course_list as $course): ?>
-                        <form action="course_info.php" method="GET">
-                            <input type="hidden" name="course_id" value="<?php echo $course['IDKH']; ?>">
-                            <div class="col h-100">
-                                <div class="card h-100">
-                                    <img src="<?php echo $course['HinhAnhKH']; ?>" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <a href="course_info.php?course_id=<?php echo $course['IDKH']; ?>"><h5 class="card-title"><?php echo $course['TenKH']; ?></h5></a>
-                                        <p class="card-text">
-                                            <!-- <?php echo $course['MoTaKH']; ?><br> -->
-                                            <!-- <center> -->
-                                            <?php
-                                                $avg_star_rating = get_avg_star_rating_by_course_id($course['IDKH']);
-                                                if (!empty($avg_star_rating)) {
-                                                    foreach ($avg_star_rating as $avg){
-                                                        $avg_star_rating = $avg['avg_star_rating'];
-                                                    }
-                                                    $avg_star_rating = round($avg_star_rating);
-                                                }else {
-                                                    $avg_star_rating = 0;
-                                                }
-                                            ?>
-                                            <?php for ($i = 1; $i <= $avg_star_rating; $i++): ?>
-                                            <i class="fa-solid fa-star"></i>
-                                            <?php endfor; ?>
-                                            <?php for ($i = 1; $i <= 5 - $avg_star_rating; $i++): ?>
-                                            <i class="fa-regular fa-star"></i>
-                                            <?php endfor; ?>
-                                            <!-- </center> -->
-                                        </p>
-                                    </div>
-                                    <div class="d-flex justify-content-around mb-4">
-                                        <h4 class="price"><?php echo number_format($course['GiaHienTaiKH'],0,",",".")."<ins>đ</ins>"; ?></h4>
-                                        <del><?php echo number_format($course['GiaGocKH'],0,",",".")."<ins>đ</ins>"; ?></del>
-                                        <button class="btn btn-primary" type="submit">Khám phá ngay</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    <?php endforeach; ?>
-                    <!-- <div class="col">
-                        <div class="card">
-                            <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Khóa học lập trình Java</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, maxime?</p>
-                            </div>
-                            <div class="d-flex justify-content-around mb-5">
-                                <h3 class="price">169,000đ</h3>
-                                <button class="btn btn-primary">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Khóa học lập trình Python căn bản</h5>
-                                <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, sint.</p>
-                            </div>
-                            <div class="d-flex justify-content-around mb-5">
-                                <h3 class="price">250,000đ</h3>
-                                <button class="btn btn-primary">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div> -->
+                <div class="cart">
+                    <?php if (isset($_SESSION['cart_item']) && !empty($_SESSION['cart_item'])) { ?>
+                        <h2>Giỏ hàng</h2>
+                        <p>Chi tiết giỏ hàng của bạn</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID khóa học</th>
+                                    <th>Tên khóa học</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Giá tiền</th>
+                                    <th>Thành tiền</th>
+                                    <th></th> <!-- Xóa khỏi giỏ hàng -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $total = 0;
+                                foreach ($_SESSION['cart_item'] as $key_car => $val_cart_item) : ?>
+                                    <tr>
+                                        <td><?php echo $val_cart_item['IDKH']; ?></td>
+                                        <td><?php echo $val_cart_item['TenKH']; ?></td>
+                                        <td><img src="<?php echo $val_cart_item['HinhAnhKH']; ?>"> </td>
+                                        <td><?php echo number_format($val_cart_item['GiaHienTaiKH'], 0, ",", ".") . "<ins>đ</ins>"; ?></td>
+                                        <td><?php
+                                            $total_item =  ($val_cart_item['GiaHienTaiKH'] * 1);
+                                            echo number_format($total_item, 0, ",", ".") . "<ins>đ</ins>"; ?>
+                                        <td>
+                                            <form action="cart_process.php" method="post">
+                                                <input type="hidden" name="course_id" value="<?php echo $val_cart_item['IDKH']; ?>">
+                                                <input type="hidden" name="action" value="delete">
+                                                <input type="submit" name="submit" value="Xóa" />
+                                            </form>
+
+                                        </td>
+                                    </tr>
+                                <?php
+                                    $total += $total_item;
+                                endforeach; ?>
+                            </tbody>
+                        </table>
+                        <div>Tổng hóa đơn thanh toán <strong><?php echo number_format($total, 0, ",", ".") . "<ins>đ</ins>"; ?></strong></div>
+                    <?php } else { ?>
+                        <h2>Giỏ hàng</h2>
+                        <p>
+                            Chưa có khóa học nào trong giỏ hàng<br>
+                            Cùng khám phá các khóa học tại Course Online nhé!
+                        </p>
+                    <?php } ?>
                 </div>
             </div>
         </section>
@@ -166,9 +138,6 @@
                         <ul class="nav flex-column">
                             <?php foreach ($menu_list as $menu) : ?>
                                 <li class="nav-item mb-2"><a href="<?php echo $menu['URLMenu']; ?>" class="nav-link p-0 text-muted"><?php echo $menu['TenMenu']; ?></a></li>
-                                <!-- <li class="nav-item mb-2"><a href="course_list.php" class="nav-link p-0 text-muted">Khóa học</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Giới thiệu</a></li>
-                                <li class="nav-item mb-2"><a href="contact.php" class="nav-link p-0 text-muted">Liên hệ</a></li> -->
                             <?php endforeach; ?>
                         </ul>
                     </div>

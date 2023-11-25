@@ -119,8 +119,11 @@
                                     <span class="text-primary"><?php echo number_format($c['GiaHienTaiKH'],0,",",".")."<ins>đ</ins>"; ?></span>
                                     <del><?php echo number_format($c['GiaGocKH'],0,",",".")."<ins>đ</ins>"; ?></del>
                                 </h4>
-                                <button class="action_btn" name="add_cart_btn">Thêm vào giỏ hàng</button><br>
-
+                                <form action="cart_process.php" method="POST">
+                                    <input type="hidden" name="action" value="add">
+                                    <input type="hidden" name="course_id" value="<?php echo $c['IDKH']; ?>">
+                                    <button class="action_btn" name="add_cart_btn">Thêm vào giỏ hàng</button><br>
+                                </form>
                                 <hr>
                                 <h3>Giới thiệu khóa học</h3>
                                 Tác giả: <?php echo $c['TacGiaKH']; ?><br>
