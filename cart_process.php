@@ -21,6 +21,7 @@ if (isset($_POST) && !empty($_POST)){
                                 $cart_item['IDKH'] = $c['IDKH'];
                                 $cart_item['TenKH'] = $c['TenKH'];
                                 $cart_item['HinhAnhKH'] = $c['HinhAnhKH'];
+                                $cart_item['GiaGocKH'] = $c['GiaGocKH'];
                                 $cart_item['GiaHienTaiKH'] = $c['GiaHienTaiKH'];
                                 $_SESSION['cart_item'][$course_id] = $cart_item;
                                 header("Location: cart.php");
@@ -33,6 +34,7 @@ if (isset($_POST) && !empty($_POST)){
                             $cart_item['IDKH'] = $c['IDKH'];
                             $cart_item['TenKH'] = $c['TenKH'];
                             $cart_item['HinhAnhKH'] = $c['HinhAnhKH'];
+                            $cart_item['GiaGocKH'] = $c['GiaGocKH'];
                             $cart_item['GiaHienTaiKH'] = $c['GiaHienTaiKH'];
                             $_SESSION['cart_item'][$course_id] = $cart_item;
                             header("Location: cart.php");
