@@ -1,6 +1,7 @@
 <?php
-    session_start();
-
+    if(!isset($_SESSION)) { 
+        session_start(); 
+    }
     if (isset($_POST['login'])){
         require("model/connect_db.php");
         require("model/identify_db.php");
@@ -18,13 +19,17 @@
                     if ($acc['VaiTro'] == "Quản lý") {
                         header("Location: admin.php");
                     } else {
+                        // $_SESSION['email'] = $acc['email'];
+                        $_SESSION['idhv'] = $acc['IDHV']; // Đổi tên trường này
                         $_SESSION['username'] = $acc['Name'];
                         $_SESSION['vaitro'] = $acc['VaiTro'];
                         $_SESSION['matkhauungdung'] = $acc['MatKhauUngDung'];
+                        // setcookie("email", $_SESSION['email'], time() + 3600);
+                        setcookie("idhv", $_SESSION['idhv'], time() + 3600); // Đổi tên trường này
                         setcookie("username", $_SESSION['username'], time() + 3600);
                         setcookie("vaitro", $_SESSION['vaitro'], time() + 3600);
                         setcookie("matkhauungdung", $_SESSION['matkhauungdung'], time() + 3600);
-                        echo "<script>alert('Đăng nhập thành công!'); location.href='index.php';</script>";
+                        echo "<script>alert('Đăng nhập thành công!'); location.href='index.php'; </script>";                        
                         // header("Location: index.php");
                     }
                 }

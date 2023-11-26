@@ -14,7 +14,8 @@
 
     function get_rating_by_course_id($course_id) {
         global $db;
-        $query = 'SELECT hocvien.TenHV, khoahoc.IDKH, khoahoc.TenKH, NoiDungDG, SaoDG
+        // them hocvien.ID
+        $query = 'SELECT hocvien.TenHV, khoahoc.IDKH, khoahoc.TenKH, NoiDungDG, SaoDG, hocvien.IDHV
                   FROM hocvien, khoahoc, danhgia
                   WHERE hocvien.IDHV = danhgia.IDHV AND khoahoc.IDKH = danhgia.IDKH AND danhgia.IDKH = :idkh
                   LIMIT 0, 10;';
@@ -39,4 +40,6 @@
         $statement->closeCursor();
         return $avg_star_rating;       
     }
+
+    
 ?>

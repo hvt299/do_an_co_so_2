@@ -1,9 +1,12 @@
 <?php
-    session_start();
+    if(!isset($_SESSION)) { 
+        session_start(); 
+    }
     require("model/connect_db.php");
     require("model/menu_db.php");
     require("model/course_db.php");
     require("model/rating_db.php");
+    require("login_process.php");
     $menu_list = get_menu();
     $course_list = get_course();
 
@@ -15,6 +18,8 @@
 
     $course = get_course_by_id($course_id);
     $ratings = get_rating_by_course_id($course_id);
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,22 +103,22 @@
                             <a href="#" class="card-title"><h2><?php echo $c['TenKH']; ?></h2></a>
                             <p class="card-text">
                             <?php
-                                                $avg_star_rating = get_avg_star_rating_by_course_id(filter_input(INPUT_GET, "course_id"));
-                                                if (!empty($avg_star_rating)) {
-                                                    foreach ($avg_star_rating as $avg){
-                                                        $avg_star_rating = $avg['avg_star_rating'];
-                                                    }
-                                                    $avg_star_rating = round($avg_star_rating);
-                                                }else {
-                                                    $avg_star_rating = 0;
-                                                }
-                                            ?>
-                                            <?php for ($i = 1; $i <= $avg_star_rating; $i++): ?>
-                                            <i class="fa-solid fa-star"></i>
-                                            <?php endfor; ?>
-                                            <?php for ($i = 1; $i <= 5 - $avg_star_rating; $i++): ?>
-                                            <i class="fa-regular fa-star"></i>
-                                            <?php endfor; ?>
+                                $avg_star_rating = get_avg_star_rating_by_course_id(filter_input(INPUT_GET, "course_id"));
+                                    if (!empty($avg_star_rating)) {
+                                        foreach ($avg_star_rating as $avg){
+                                            $avg_star_rating = $avg['avg_star_rating'];
+                                        }
+                                        $avg_star_rating = round($avg_star_rating);
+                                    }else {
+                                        $avg_star_rating = 0;
+                                    }
+                            ?>
+                            <?php for ($i = 1; $i <= $avg_star_rating; $i++): ?>
+                                <i class="fa-solid fa-star"></i>
+                                    <?php endfor; ?>
+                            <?php for ($i = 1; $i <= 5 - $avg_star_rating; $i++): ?>
+                                <i class="fa-regular fa-star"></i>
+                            <?php endfor; ?>
 
                                 <h4 class="card-text mt-2">
                                     <span class="text-primary"><?php echo number_format($c['GiaHienTaiKH'],0,",",".")."<ins>đ</ins>"; ?></span>
@@ -197,7 +202,54 @@
                 </div>
             </div>
         </section>
+        <!-- Form Đánh Giá -->
+        <style>
+            #review_form {
+                max-width: 400px;
+                margin: 20px auto;
+                padding: 15px;
+                background-color: #f5f5f5;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
 
+            label {
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            textarea, input {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 15px;
+                box-sizing: border-box;
+            }
+
+            button {
+                background-color: #4caf50;
+                color: white;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        </style>
+
+        <div id="review_form">
+            <h2>Đánh Giá Khóa Học</h2>
+            <form action="process_review.php" method="post">
+                <input type="hidden" name="course_id" value="<?php echo $course_id; ?>" />
+                <input type="hidden" name="idhv" value="<?php echo $_SESSION['idhv']; ?>">
+                <label for="review_content">Nội dung đánh giá:</label>
+                <textarea name="review_content" id="review_content" rows="4" required></textarea>
+
+                <label for="star_rating">Số sao (1-5):</label>
+                <input type="number" name="star_rating" id="star_rating" min="1" max="5" required />
+
+                <button type="submit">Gửi Đánh Giá</button>
+            </form>
+        </div>
+            
         <section class="mb-3">
             <div class="container py-5">
                 <h2 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i> CÁC KHÓA HỌC KHÁC</h2>
@@ -245,7 +297,7 @@
                 </div>
             </div>
         </section>
-
+        
         <div class="container">
             <footer class="py-5">
                 <div class="row">
