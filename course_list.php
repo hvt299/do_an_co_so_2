@@ -24,17 +24,15 @@
             <ul class="links">
                 <?php foreach ($menu_list as $menu): ?>
                 <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
-                <!-- <li><a href="course_list.php">Khóa học</a></li>
-                <li><a href="#">Giới thiệu</a></li>
-                <li><a href="#">Liên hệ</a></li> -->
                 <?php endforeach; ?>
             </ul>
             <ul class="links">
                 <?php if (isset($_COOKIE['username'])): ?>
+                    <li><a href="cart.php" class="cart_btn"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: darkgray;"></i></a></li>
                     <li><a href="#" class="links"><?php echo $_COOKIE['username']; ?></a></li>
                     <li><a href="logout.php" class="action_btn">Đăng xuất</a></li>
                 <?php else: ?>
-                    <li><a href="#" class="cart_btn"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: darkgray;"></i></a></li>
+                    <li><a href="cart.php" class="cart_btn"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: darkgray;"></i></a></li>
                     <li><a href="login.php" class="action_btn">Đăng nhập</a></li>
                 <?php endif; ?>
             </ul>
@@ -46,9 +44,6 @@
         <div class="dropdown_menu">
             <?php foreach ($menu_list as $menu): ?>
             <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
-            <!-- <li><a href="course_list.php">Khóa học</a></li>
-            <li><a href="#">Giới thiệu</a></li>
-            <li><a href="#">Liên hệ</a></li> -->
             <?php endforeach; ?>
             <?php if (isset($_COOKIE['username'])): ?>
                 <li><a href="#" class="links"><?php echo $_COOKIE['username']; ?></a></li>
@@ -61,20 +56,6 @@
     </header>
 
     <main>
-        <section id="home">
-            <h1>&lt;/&gt;Bring Course To You!&lt;/&gt;</h1>
-            <p>
-                We offer a wide range of comprehensive programming courses to equip you <br>
-                with the knowledge and skills necessary to succeed in today's digital world.
-            </p>
-            <form class="form-inline" action="#">
-                <input class="form-control mr-sm-2 mb-3" type="text" placeholder="Tìm khóa học bạn đang quan tâm" size="50px">
-                <button class="btn btn-primary" type="submit" style="width: 100%">
-                    <i class="fa-solid fa-magnifying-glass fa-beat-fade"></i>
-                </button>
-            </form>
-        </section>
-
         <section class="mb-3">
             <div class="container py-5">
                 <h2 class="text-center"><i class="fa-solid fa-layer-group" style="font-size: 36px;"></i> CÁC KHÓA HỌC CỦA CHÚNG TÔI</h2>
@@ -88,8 +69,6 @@
                                     <div class="card-body">
                                         <a href="course_info.php?course_id=<?php echo $course['IDKH']; ?>"><h5 class="card-title"><?php echo $course['TenKH']; ?></h5></a>
                                         <p class="card-text">
-                                            <!-- <?php echo $course['MoTaKH']; ?><br> -->
-                                            <!-- <center> -->
                                             <?php
                                                 $avg_star_rating = get_avg_star_rating_by_course_id($course['IDKH']);
                                                 if (!empty($avg_star_rating)) {
@@ -107,7 +86,6 @@
                                             <?php for ($i = 1; $i <= 5 - $avg_star_rating; $i++): ?>
                                             <i class="fa-regular fa-star"></i>
                                             <?php endfor; ?>
-                                            <!-- </center> -->
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-around mb-4">
@@ -119,32 +97,6 @@
                             </div>
                         </form>
                     <?php endforeach; ?>
-                    <!-- <div class="col">
-                        <div class="card">
-                            <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Khóa học lập trình Java</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, maxime?</p>
-                            </div>
-                            <div class="d-flex justify-content-around mb-5">
-                                <h3 class="price">169,000đ</h3>
-                                <button class="btn btn-primary">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Khóa học lập trình Python căn bản</h5>
-                                <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, sint.</p>
-                            </div>
-                            <div class="d-flex justify-content-around mb-5">
-                                <h3 class="price">250,000đ</h3>
-                                <button class="btn btn-primary">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>
@@ -166,9 +118,6 @@
                         <ul class="nav flex-column">
                             <?php foreach ($menu_list as $menu) : ?>
                                 <li class="nav-item mb-2"><a href="<?php echo $menu['URLMenu']; ?>" class="nav-link p-0 text-muted"><?php echo $menu['TenMenu']; ?></a></li>
-                                <!-- <li class="nav-item mb-2"><a href="course_list.php" class="nav-link p-0 text-muted">Khóa học</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Giới thiệu</a></li>
-                                <li class="nav-item mb-2"><a href="contact.php" class="nav-link p-0 text-muted">Liên hệ</a></li> -->
                             <?php endforeach; ?>
                         </ul>
                     </div>
