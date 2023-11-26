@@ -53,20 +53,6 @@
     </header>
 
     <main>
-        <section id="home">
-            <h1>&lt;/&gt;Bring Course To You!&lt;/&gt;</h1>
-            <p>
-                We offer a wide range of comprehensive programming courses to equip you <br>
-                with the knowledge and skills necessary to succeed in today's digital world.
-            </p>
-            <form class="form-inline" action="#">
-                <input class="form-control mr-sm-2 mb-3" type="text" placeholder="Tìm khóa học bạn đang quan tâm" size="50px">
-                <button class="btn btn-primary" type="submit" style="width: 100%">
-                    <i class="fa-solid fa-magnifying-glass fa-beat-fade"></i>
-                </button>
-            </form>
-        </section>
-
         <section class="mb-3">
             <div class="container py-5">
                 <h2>Giỏ hàng</h2>
@@ -104,7 +90,6 @@
                             <form action="cart_process.php" method="post">
                                 <input type="hidden" name="course_id" value="<?php echo $val_cart_item['IDKH']; ?>">
                                 <input type="hidden" name="action" value="delete">
-                                <!-- <input type="submit" name="submit" value="Xóa" /> -->
                                 <button class="remove-product">
                                     Xóa khỏi giỏ hàng
                                 </button>
@@ -223,5 +208,4 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
