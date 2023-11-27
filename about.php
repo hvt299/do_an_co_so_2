@@ -61,33 +61,35 @@
                 <div class="title">
                     <h1>Đội ngũ phát triển</h1>
                 </div>
-                <div class="teams">
-                    <img src="images/lap-trinh-vien.png" height="100px" alt="">
-                    <div class="name">Hứa Viết Thái</div>
-                    <div class="role">Developer</div>
-                    <div class="about">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus inventore atque voluptate fugiat nobis tenetur alias, dolorem dicta consequatur at accusantium nostrum, ut expedita odio. Doloribus eaque fuga perspiciatis in.
+                <div class="sub-container">
+                    <div class="teams">
+                        <img src="images/lap-trinh-vien.png" alt="">
+                        <div class="name">Hứa Viết Thái</div>
+                        <div class="role">Developer</div>
+                        <div class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus inventore atque voluptate fugiat nobis tenetur alias, dolorem dicta consequatur at accusantium nostrum, ut expedita odio. Doloribus eaque fuga perspiciatis in.
+                        </div>
+                        <div class="social-links">
+                            <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
+                            <a href="" class="card-title"><i class="fa-brands fa-instagram" style="position:unset;transform:none;"></i></a>
+                            <a href="" class="card-title"><i class="fa-brands fa-twitter" style="position:unset;transform:none;"></i></a>
+                            <a href="" class="card-title"><i class="fa-brands fa-github" style="position:unset;transform:none;"></i></a>
+                        </div>
                     </div>
-                    <div class="social-links">
-                        <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
-                        <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
-                        <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
-                        <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
-                    </div>
-                </div>
 
-                <div class="teams">
-                    <img src="images/lap-trinh-vien.png" height="100px" alt="">
-                    <div class="name">Phạm Thế Anh</div>
-                    <div class="role">Developer</div>
-                    <div class="about">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus inventore atque voluptate fugiat nobis tenetur alias, dolorem dicta consequatur at accusantium nostrum, ut expedita odio. Doloribus eaque fuga perspiciatis in.
-                    </div>
-                    <div class="social-links">
-                        <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
-                        <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
-                        <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
-                        <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
+                    <div class="teams">
+                        <img src="images/lap-trinh-vien.png" alt="">
+                        <div class="name">Phạm Thế Anh</div>
+                        <div class="role">Developer</div>
+                        <div class="about">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus inventore atque voluptate fugiat nobis tenetur alias, dolorem dicta consequatur at accusantium nostrum, ut expedita odio. Doloribus eaque fuga perspiciatis in.
+                        </div>
+                        <div class="social-links">
+                            <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
+                            <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
+                            <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
+                            <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
