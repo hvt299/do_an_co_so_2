@@ -234,7 +234,7 @@ section#home {
 
 .overlay::before,
 .overlay::after {
-    content: '';
+    /* content: ''; */
     position: absolute;
     width: 40px;
     height: 40px;
