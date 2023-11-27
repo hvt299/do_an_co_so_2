@@ -26,9 +26,6 @@
             <ul class="links">
                 <?php foreach ($menu_list as $menu): ?>
                 <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
-                <!-- <li><a href="course_list.php">Khóa học</a></li>
-                <li><a href="#">Giới thiệu</a></li>
-                <li><a href="#">Liên hệ</a></li> -->
                 <?php endforeach; ?>
             </ul>
             <ul class="links">
@@ -49,9 +46,6 @@
         <div class="dropdown_menu">
             <?php foreach ($menu_list as $menu): ?>
             <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
-            <!-- <li><a href="course_list.php">Khóa học</a></li>
-            <li><a href="#">Giới thiệu</a></li>
-            <li><a href="#">Liên hệ</a></li> -->
             <?php endforeach; ?>
             <?php if (isset($_COOKIE['username'])): ?>
                 <li><a href="#" class="links"><?php echo $_COOKIE['username']; ?></a></li>
@@ -91,8 +85,6 @@
                                     <div class="card-body">
                                         <a href="course_info.php?course_id=<?php echo $course['IDKH']; ?>"><h5 class="card-title"><?php echo $course['TenKH']; ?></h5></a>
                                         <p class="card-text">
-                                            <!-- <?php echo $course['MoTaKH']; ?><br> -->
-                                            <!-- <center> -->
                                             <?php
                                                 $avg_star_rating = get_avg_star_rating_by_course_id($course['IDKH']);
                                                 if (!empty($avg_star_rating)) {
@@ -110,7 +102,6 @@
                                             <?php for ($i = 1; $i <= 5 - $avg_star_rating; $i++): ?>
                                             <i class="fa-regular fa-star"></i>
                                             <?php endfor; ?>
-                                            <!-- </center> -->
                                         </p>
                                     </div>
                                     <div class="d-flex justify-content-around mb-4">
@@ -122,45 +113,6 @@
                             </div>
                         </form>
                     <?php endforeach; ?>
-                    <!-- <div class="col">
-                        <div class="card">
-                            <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Khóa học lập trình C/C++ từ cơ bản đến nâng cao</h5>
-                                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae, cumque!</p>
-                            </div>
-                            <div class="d-flex justify-content-around mb-5">
-                                <h3 class="price">159,000đ</h3>
-                                <button class="btn btn-primary">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Khóa học lập trình Java</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, maxime?</p>
-                            </div>
-                            <div class="d-flex justify-content-around mb-5">
-                                <h3 class="price">169,000đ</h3>
-                                <button class="btn btn-primary">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="images/khoa-hoc-c-c++(1).png" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Khóa học lập trình Python căn bản</h5>
-                                <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi, sint.</p>
-                            </div>
-                            <div class="d-flex justify-content-around mb-5">
-                                <h3 class="price">250,000đ</h3>
-                                <button class="btn btn-primary">Mua ngay</button>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>
@@ -231,25 +183,11 @@
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
-                                <!-- <div class="card card-rating swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay">
-
-                                        </span>
-                                        <div class="card-image">
-                                            <img src="images/lap-trinh-vien.png" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">Nguyễn Văn B</h2>
-                                        <p class="description">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quis facere temporibus iste ex, molestiae delectus commodi laborum impedit suscipit?
-                                        </p>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
+                    <!-- <div class="swiper-button-next swiper-navBtn"></div> -->
+                    <!-- <div class="swiper-button-prev swiper-navBtn"></div> -->
                     <!-- <div class="swiper-pagination"></div> -->
                 </div>
             </div>
@@ -272,9 +210,6 @@
                         <ul class="nav flex-column">
                             <?php foreach ($menu_list as $menu) : ?>
                                 <li class="nav-item mb-2"><a href="<?php echo $menu['URLMenu']; ?>" class="nav-link p-0 text-muted"><?php echo $menu['TenMenu']; ?></a></li>
-                                <!-- <li class="nav-item mb-2"><a href="course_list.php" class="nav-link p-0 text-muted">Khóa học</a></li>
-                                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Giới thiệu</a></li>
-                                <li class="nav-item mb-2"><a href="contact.php" class="nav-link p-0 text-muted">Liên hệ</a></li> -->
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -329,9 +264,29 @@
         var swiper = new Swiper(".mySwiper", {
         slidesPerView: 3,
         spaceBetween: 30,
+        loop:true,
+        centerSlide:'true',
+        fade:'true',
+        grabCursor:'true',
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
+            dynamicBullets:true,
+        },
+        navigation:{
+            nextEl:".swiper-button-next",
+            prevEl:".swiper-button-prev",
+        },
+        breakpoints:{
+            0:{
+                slidesPerView:1,
+            },
+            520:{
+                slidesPerView:2,
+            },
+            950:{
+                slidesPerView:3,
+            },
         },
         });
     </script>

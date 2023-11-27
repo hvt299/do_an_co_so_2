@@ -287,6 +287,12 @@ img.img-item {
     margin-bottom: 30px;
 }
 
+@media screen and (max-width:768px) {
+  .slide-content {
+    margin: 0 10px;
+  }
+}
+
 .f5f6fa-bg-color {
     background-color: #f5f6fa;
 }
