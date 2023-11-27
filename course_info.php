@@ -1,7 +1,7 @@
 <?php
-    if(!isset($_SESSION)) { 
+    // if(!isset($_SESSION)) { 
         session_start(); 
-    }
+    // }
     require("model/connect_db.php");
     require("model/menu_db.php");
     require("model/course_db.php");
@@ -220,7 +220,7 @@
             <h2>Đánh Giá Khóa Học</h2>
             <form action="process_review.php" method="post">
                 <input type="hidden" name="course_id" value="<?php echo $course_id; ?>" />
-                <input type="hidden" name="idhv" value="<?php echo $_SESSION['idhv']; ?>">
+                <input type="hidden" name="idhv" value="<?php if (isset($_SESSION['idhv'])){ echo $_SESSION['idhv'];} ?>">
                 <label for="review_content">Nội dung đánh giá:</label>
                 <textarea name="review_content" id="review_content" rows="4" required></textarea>
 
