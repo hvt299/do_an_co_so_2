@@ -750,3 +750,84 @@ a.google span {
       width: 40%;
     }
   }
+
+                /*====================== ABOUT ============================*/
+.container.py5{
+  text-align: center;
+  background-color: #f5f5f5;
+}
+
+.header{
+  padding-top: 60px;
+  color: #444;
+  font-size: 20px;
+  margin: auto;
+  line-height: 50px;
+}
+
+.sub-container{
+  max-width: 1200px;
+  margin: auto;
+  padding: 48px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.teams{
+  margin: 10px;
+  padding: 22px;
+  max-width: 30%;
+  cursor: pointer;
+  transition: 0.4s;
+  box-sizing: border-box;
+}
+
+.teams img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.name{
+  padding: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.role{
+  font-style: italic;
+  color: #888;
+}
+
+.about{
+  margin: 20px 0;
+  font-weight: lighter;
+  color: #4e4e4e;
+}
+
+.social-links{
+  margin: 14px;
+}
+
+.social-links a{
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  transition: 0.4s;
+}
+
+.social-links a:hover{
+  background-color: #ddd;
+  border-radius: 12px;
+}
+
+.social-links a i{
+  color: #444;
+}
+
+@media screen and (max-width : 600px){
+  .teams{
+    max-width: 100%;
+  }
+}
