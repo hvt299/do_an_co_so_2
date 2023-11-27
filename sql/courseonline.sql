@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2023 at 01:57 PM
+-- Generation Time: Nov 27, 2023 at 06:25 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -42,7 +42,8 @@ CREATE TABLE `danhgia` (
 INSERT INTO `danhgia` (`IDDG`, `IDHV`, `IDKH`, `NoiDungDG`, `SaoDG`) VALUES
 (1, 1, 1, 'Khóa học C/C++ từ cơ bản đến nâng cao là một chương trình học tuyệt vời để nắm vững hai ngôn ngữ lập trình quan trọng này. Khóa học cung cấp một hành trình học tập đầy đủ, bắt đầu từ những khái niệm căn bản như biến và cú pháp, sau đó tiến tới các chủ đề phức tạp như con trỏ và lập trình hướng đối tượng.', 5),
 (2, 2, 2, 'Khóa học cung cấp một sự kết hợp tốt giữa lý thuyết và thực hành. Học viên không chỉ học các khái niệm trên giấy mà còn có cơ hội thực hành thông qua các bài tập và dự án thực tế. Điều này giúp học viên áp dụng kiến thức vào thực tế và phát triển kỹ năng lập trình thực tế.', 4),
-(3, 3, 3, 'Khóa học Python là một khóa học đáng giá cho những ai muốn nắm vững ngôn ngữ lập trình Python. Với nội dung phong phú, môi trường thực hành tốt, giảng viên chuyên nghiệp và tính linh hoạt trong học tập, khóa học này cung cấp một cơ hội tuyệt vời để học viên phát triển kỹ năng lập trình Python và áp dụng kiến thức vào các dự án thực tế.', 4);
+(3, 3, 3, 'Khóa học Python là một khóa học đáng giá cho những ai muốn nắm vững ngôn ngữ lập trình Python. Với nội dung phong phú, môi trường thực hành tốt, giảng viên chuyên nghiệp và tính linh hoạt trong học tập, khóa học này cung cấp một cơ hội tuyệt vời để học viên phát triển kỹ năng lập trình Python và áp dụng kiến thức vào các dự án thực tế.', 4),
+(4, 2, 4, 'Nội dung khóa học không được cập nhật đầy đủ hoặc không đi sâu vào các khía cạnh phức tạp của ngôn ngữ PHP.', 3);
 
 -- --------------------------------------------------------
 
@@ -137,9 +138,11 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`Email`, `Name`, `Password`, `VaiTro`, `MatKhauUngDung`) VALUES
+('admin@courseonline.com', 'Admin', 'admin', 'Quản lý', NULL),
 ('huavietthai299@gmail.com', 'Hứa Viết Thái', '123321', 'Học viên', NULL),
 ('nguyenvana@gmail.com', 'Nguyễn Văn A', '123abc345', 'Học viên', NULL),
-('nguyenvanb@gmail.com', 'Nguyễn B', '123', 'Học viên', NULL);
+('nguyenvanb@gmail.com', 'Nguyễn B', '123', 'Học viên', NULL),
+('phong31004@gmail.com', 'duyphong3131', '123', 'Học viên', NULL);
 
 --
 -- Indexes for dumped tables
@@ -186,7 +189,7 @@ ALTER TABLE `taikhoan`
 -- AUTO_INCREMENT for table `danhgia`
 --
 ALTER TABLE `danhgia`
-  MODIFY `IDDG` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IDDG` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `hocvien`
