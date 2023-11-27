@@ -97,7 +97,7 @@ header {
 /* DROPDOWN MENU */
 .dropdown_menu {
     display: none;
-    position: absolute;
+    /* position: absolute; */
     right: 2rem;
     top: 60px;
     height: 0;
