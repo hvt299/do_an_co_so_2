@@ -1,25 +1,16 @@
 <?php
-    // function get_course() {
-    //     global $db;
-    //     $query = 'SELECT * FROM khoahoc';
-    //     $statement = $db->prepare($query);
-    //     $statement->execute();
-    //     $course_list = $statement->fetchAll();
-    //     $statement->closeCursor();
-    //     return $course_list;
-    // }
-
-    // function get_course_by_id($course_id) {
-    //     global $db;
-    //     $query = 'SELECT * FROM khoahoc
-    //               WHERE IDKH = :idkh';
-    //     $statement = $db->prepare($query);
-    //     $statement->bindValue(':idkh', $course_id);
-    //     $statement->execute();
-    //     $course = $statement->fetchAll();
-    //     $statement->closeCursor();
-    //     return $course;
-    // }
+    function add_student($name, $email) {
+        global $db;
+        $query = 'INSERT INTO hocvien
+                     (TenHV, Email)
+                  VALUES
+                     (:name, :email)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':name', $name);
+        $statement->bindValue(':email', $email);
+        $statement->execute();
+        $statement->closeCursor();
+    }
 
     function get_student_number(){
         global $db;

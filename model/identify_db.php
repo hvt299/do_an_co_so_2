@@ -41,6 +41,4 @@
         $statement->execute();
         $statement->closeCursor();
     }
-
-    
 ?>
