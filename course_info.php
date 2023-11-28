@@ -125,6 +125,7 @@
         <section class="mb-3">
             <div class="py-5">
                 <h2 class="text-center"><i class="fa-solid fa-quote-left" style="font-size: 36px;"></i> CẢM NHẬN CỦA HỌC VIÊN</h2>
+                <?php if (empty($ratings)): echo "<center>Chưa có lượt đánh giá nào</center>"; else: ?>
                 <div class="wrapper">
                     <div class="slide-container">
                         <div class="slide-content swiper mySwiper pb-1">
@@ -160,29 +161,15 @@
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
-                                <!-- <div class="card card-rating swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay">
-
-                                        </span>
-                                        <div class="card-image">
-                                            <img src="images/lap-trinh-vien.png" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">Nguyễn Văn B</h2>
-                                        <p class="description">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia quis facere temporibus iste ex, molestiae delectus commodi laborum impedit suscipit?
-                                        </p>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
                     <!-- <div class="swiper-pagination"></div> -->
                 </div>
+                <?php endif; ?>
             </div>
         </section>
+
         <!-- Form Đánh Giá -->
         <style>
             #review_form {
