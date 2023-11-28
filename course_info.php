@@ -205,7 +205,7 @@
 
         <div id="review_form">
             <h2>Đánh Giá Khóa Học</h2>
-            <form action="process_review.php" method="post">
+            <form action="review_process.php" method="post">
                 <input type="hidden" name="course_id" value="<?php echo $course_id; ?>" />
                 <input type="hidden" name="idhv" value="<?php if (isset($_SESSION['idhv'])){ echo $_SESSION['idhv'];} ?>">
                 <label for="review_content">Nội dung đánh giá:</label>

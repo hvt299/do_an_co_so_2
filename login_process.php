@@ -14,7 +14,7 @@
             if (empty($account)) {
                 $account = get_account_by_email_password_2($email, $password);
                 if (empty($account)) {
-                    echo "<script>alert('Login Failed.'); location.href='login.php';</script>";
+                    echo "<script>alert('Đăng nhập thất bại!'); location.href='login.php';</script>";
                     // header("Location: login.php");
                 } else {
                     foreach($account as $acc){
