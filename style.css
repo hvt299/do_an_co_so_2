@@ -832,3 +832,38 @@ a.google span {
     max-width: 100%;
   }
 }
+
+/* Form đánh giá */
+#review_form {
+  max-width: 450px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label.review-title {
+  display: block;
+  margin-bottom: 8px;
+}
+
+textarea#review_content, input#star_rating {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+button.btn-rating {
+  background-color: #0171d3;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.btn-rating:hover {
+  background-color: #016dcb;
+}

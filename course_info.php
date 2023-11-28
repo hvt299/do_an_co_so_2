@@ -171,50 +171,17 @@
         </section>
 
         <!-- Form Đánh Giá -->
-        <style>
-            #review_form {
-                max-width: 400px;
-                margin: 20px auto;
-                padding: 15px;
-                background-color: #f5f5f5;
-                border-radius: 5px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
-
-            label {
-                display: block;
-                margin-bottom: 8px;
-            }
-
-            textarea, input {
-                width: 100%;
-                padding: 8px;
-                margin-bottom: 15px;
-                box-sizing: border-box;
-            }
-
-            button {
-                background-color: #4caf50;
-                color: white;
-                padding: 10px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-        </style>
-
         <div id="review_form">
-            <h2>Đánh Giá Khóa Học</h2>
+            <h2><i class="fa-regular fa-message" style="font-size: 30px;"></i> ĐÁNH GIÁ KHÓA HỌC</h2>
             <form action="review_process.php" method="post">
                 <input type="hidden" name="course_id" value="<?php echo $course_id; ?>" />
-                <input type="hidden" name="idhv" value="<?php if (isset($_SESSION['idhv'])){ echo $_SESSION['idhv'];} ?>">
-                <label for="review_content">Nội dung đánh giá:</label>
+                <label for="review_content" class="review-title">Nội dung đánh giá:</label>
                 <textarea name="review_content" id="review_content" rows="4" required></textarea>
 
-                <label for="star_rating">Số sao (1-5):</label>
+                <label for="star_rating" class="review-title">Số sao (1-5):</label>
                 <input type="number" name="star_rating" id="star_rating" min="1" max="5" required />
 
-                <button type="submit">Gửi Đánh Giá</button>
+                <button class="btn-rating" type="submit">Gửi Đánh Giá</button>
             </form>
         </div>
             

@@ -1,7 +1,4 @@
 <?php
-    if(!isset($_SESSION)) { 
-        session_start(); 
-    }
     if (isset($_POST['login'])){
         require("model/connect_db.php");
         require("model/identify_db.php");

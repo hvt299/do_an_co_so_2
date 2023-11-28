@@ -27,6 +27,18 @@
         return $ratings;
     }
 
+    function add_rating($idhv, $course_id, $review_content, $star_rating){
+        global $db;
+        $query = 'INSERT INTO danhgia (IDHV, IDKH, NoiDungDG, SaoDG) VALUES (:idhv, :course_id, :review_content, :star_rating)';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':idhv', $idhv);
+        $statement->bindValue(':course_id', $course_id);
+        $statement->bindValue(':review_content', $review_content);
+        $statement->bindValue(':star_rating', $star_rating);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
     function get_avg_star_rating_by_course_id($course_id) {
         global $db;
         $query = 'SELECT AVG(danhgia.SaoDG) AS avg_star_rating
