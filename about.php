@@ -59,7 +59,7 @@
         <section class="mb-3">
             <div class="container py-5">
                 <div class="title">
-                    <h1>Đội ngũ phát triển</h1>
+                    <h1><i class="fa-solid fa-code" style="font-size: 36px;"></i> Đội ngũ phát triển</h1>
                 </div>
                 <div class="sub-container">
                     <div class="teams">
@@ -67,7 +67,8 @@
                         <div class="name">Hứa Viết Thái</div>
                         <div class="role">Developer</div>
                         <div class="about">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus inventore atque voluptate fugiat nobis tenetur alias, dolorem dicta consequatur at accusantium nostrum, ut expedita odio. Doloribus eaque fuga perspiciatis in.
+                            22SE1 - VKU<br>
+                            <i class="fa-solid fa-location-dot"></i> Quảng Nam, Việt Nam<br>
                         </div>
                         <div class="social-links">
                             <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>
@@ -82,7 +83,8 @@
                         <div class="name">Phạm Thế Anh</div>
                         <div class="role">Developer</div>
                         <div class="about">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus inventore atque voluptate fugiat nobis tenetur alias, dolorem dicta consequatur at accusantium nostrum, ut expedita odio. Doloribus eaque fuga perspiciatis in.
+                            22SE1 - VKU<br>
+                            <i class="fa-solid fa-location-dot"></i> Quảng Trị, Việt Nam<br>
                         </div>
                         <div class="social-links">
                             <a href="" class="card-title"><i class="fa-brands fa-facebook" style="position:unset;transform:none;"></i></a>

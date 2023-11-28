@@ -20,4 +20,14 @@
         $statement->closeCursor();
         return $course;
     }
+
+    function get_course_number(){
+        global $db;
+        $query = 'SELECT COUNT(*) AS SoLuongKhoaHoc FROM khoahoc';
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $course_number = $statement->fetchAll();
+        $statement->closeCursor();
+        return $course_number;
+    }
 ?>

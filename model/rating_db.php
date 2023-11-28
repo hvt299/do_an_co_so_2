@@ -41,5 +41,24 @@
         return $avg_star_rating;       
     }
 
-    
+    function get_rating_number(){
+        global $db;
+        $query = 'SELECT COUNT(*) AS SoLuongDanhGia FROM danhgia';
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $rating_number = $statement->fetchAll();
+        $statement->closeCursor();
+        return $rating_number;
+    }
+
+    function get_avg_star_rating(){
+        global $db;
+        $query = 'SELECT AVG(SaoDG) AS TiLeDanhGia
+                  FROM danhgia';
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $avg_star_rating = $statement->fetchAll();
+        $statement->closeCursor();
+        return $avg_star_rating;
+    }
 ?>

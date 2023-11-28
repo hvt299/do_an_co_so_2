@@ -780,6 +780,7 @@ a.google span {
   cursor: pointer;
   transition: 0.4s;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .teams img{
