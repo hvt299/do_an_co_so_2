@@ -1,4 +1,14 @@
 <?php
+    function get_account() {
+        global $db;
+        $query = 'SELECT * FROM taikhoan';
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $account_list = $statement->fetchAll();
+        $statement->closeCursor();
+        return $account_list;
+    }
+
     // sửa đổi
     function get_account_by_email_password($email, $password) {
         global $db;

@@ -41,7 +41,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -53,7 +53,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -65,6 +65,22 @@
             <div class="sidebar-heading">
                 Interface
             </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTables"
+                    aria-expanded="true" aria-controls="collapseTables">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tables</span>
+                </a>
+                <div id="collapseTables" class="collapse" aria-labelledby="headingTables" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Danh sách các bảng:</h6>
+                        <a class="collapse-item" href="account_tb.php">Tài khoản</a>
+                        <a class="collapse-item" href="student_tb.php">Học viên</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -139,7 +155,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="table.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>
@@ -377,7 +393,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Bảng điều khiển</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> In báo cáo</a>
                     </div>

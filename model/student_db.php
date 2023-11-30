@@ -1,4 +1,14 @@
 <?php
+    function get_student() {
+        global $db;
+        $query = 'SELECT * FROM hocvien';
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $student_list = $statement->fetchAll();
+        $statement->closeCursor();
+        return $student_list;
+    }
+
     function add_student($name, $email) {
         global $db;
         $query = 'INSERT INTO hocvien
