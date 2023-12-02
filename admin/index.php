@@ -78,6 +78,8 @@
                         <h6 class="collapse-header">Danh sách các bảng:</h6>
                         <a class="collapse-item" href="table.php?action=taikhoan">Tài khoản</a>
                         <a class="collapse-item" href="table.php?action=hocvien">Học viên</a>
+                        <a class="collapse-item" href="table.php?action=khoahoc">Khóa học</a>
+                        <a class="collapse-item" href="table.php?action=danhgia">Đánh giá</a>
                     </div>
                 </div>
             </li>
@@ -254,8 +256,8 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                        <div class="small text-gray-500">Ngày 01/12/2023</div>
+                                        <span class="font-weight-bold">Chào tháng 12!</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -390,6 +392,17 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+
+                    <h1 class="h6 mb-2 text-gray-600">
+                        <?php
+                            $currentDateTime = date('d/m/y H:i:s');
+                            $datetime = DateTime::createFromFormat('d/m/y H:i:s', $currentDateTime);
+                            $zone_Asia_Ho_Chi_Minh = new DateTimeZone('Asia/Ho_Chi_Minh');
+                            $datetime->setTimezone($zone_Asia_Ho_Chi_Minh);
+                            echo "Ngày giờ hiện tại: " .$datetime->format('d/m/y H:i:s');
+                        ?>
+                        <br>
+                    </h1>
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -558,7 +571,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Tài khoản</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -581,13 +594,13 @@
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
+                                            <i class="fas fa-circle text-primary"></i> Học viên
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
+                                            <i class="fas fa-circle text-success"></i> Giảng viên
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
+                                            <i class="fas fa-circle text-info"></i> Quản lý
                                         </span>
                                     </div>
                                 </div>

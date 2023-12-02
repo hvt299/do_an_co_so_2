@@ -12,6 +12,16 @@
         return $rating_list;
     }
 
+    function get_rating_2() {
+        global $db;
+        $query = 'SELECT * FROM danhgia';
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $rating_list = $statement->fetchAll();
+        $statement->closeCursor();
+        return $rating_list;
+    }
+
     function get_rating_by_course_id($course_id) {
         global $db;
         // them hocvien.ID

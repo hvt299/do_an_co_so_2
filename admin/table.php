@@ -3,6 +3,8 @@
     require("../model/connect_db.php");
     require("../model/identify_db.php");
     require("../model/student_db.php");
+    require("../model/course_db.php");
+    require("../model/rating_db.php");
 
     $action = filter_input(INPUT_GET, 'action');
     if ($action == NULL){
@@ -11,6 +13,8 @@
 
     $account_list = get_account();
     $student_list = get_student();
+    $course_list = get_course();
+    $rating_list = get_rating_2();
 
     if (!isset($_COOKIE['vaitro']) || $_COOKIE['vaitro'] != "Quản lý"){
         echo "<script>alert('Vui lòng đăng nhập với quyền quản lý để tiếp tục!');location.href='../login.php';</script>";
@@ -24,7 +28,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title><?php echo $_COOKIE['username']; ?> - Dashboard</title>
+    <title><?php echo $_COOKIE['username']; ?> - Tables</title>
 
     <!-- Custom fonts for this template -->
     <script src="https://kit.fontawesome.com/73d99ea241.js" crossorigin="anonymous"></script>
@@ -70,11 +74,11 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Chức năng chính
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTables"
                     aria-expanded="true" aria-controls="collapseTables">
                     <i class="fas fa-fw fa-table"></i>
@@ -86,6 +90,8 @@
                         <form action="table.php" method="GET">
                             <a class="collapse-item" href="table.php?action=taikhoan">Tài khoản</a>
                             <a class="collapse-item" href="table.php?action=hocvien">Học viên</a>
+                            <a class="collapse-item" href="table.php?action=khoahoc">Khóa học</a>
+                            <a class="collapse-item" href="table.php?action=danhgia">Đánh giá</a>
                         </form>
                     </div>
                 </div>
@@ -163,7 +169,7 @@
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="table.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
@@ -258,8 +264,8 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                        <div class="small text-gray-500">01/12/2023</div>
+                                        <span class="font-weight-bold">Chào tháng 12!</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -398,12 +404,19 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">
                         <?php
-                            if ($action == 'taikhoan'){
-                                echo "Quản lý tài khoản";
-                            }else{
-                                if ($action == 'hocvien'){
+                            switch ($action){
+                                case 'taikhoan':
+                                    echo "Quản lý tài khoản";
+                                    break;
+                                case 'hocvien':
                                     echo "Quản lý học viên";
-                                }
+                                    break;
+                                case 'khoahoc':
+                                    echo "Quản lý khóa học";
+                                    break;
+                                case 'danhgia';
+                                    echo "Quản lý đánh giá";
+                                    break;
                             }
                         ?>
                     </h1>
@@ -416,12 +429,19 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">
                                 <?php
-                                    if ($action == 'taikhoan'){
-                                        echo "Bảng tài khoản";
-                                    }else{
-                                        if ($action == 'hocvien'){
+                                    switch ($action){
+                                        case 'taikhoan':
+                                            echo "Bảng tài khoản";
+                                            break;
+                                        case 'hocvien':
                                             echo "Bảng học viên";
-                                        }
+                                            break;
+                                        case 'khoahoc':
+                                            echo "Bảng khóa học";
+                                            break;
+                                        case 'danhgia';
+                                            echo "Bảng đánh giá";
+                                            break;
                                     }
                                 ?>
                             </h6>
@@ -431,13 +451,15 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <?php if ($action == 'taikhoan'): ?>
+                                            <?php switch ($action):
+                                                  case "taikhoan": ?>
                                             <th>Email</th>
                                             <th>Tên</th>
                                             <th>Password</th>
                                             <th>Vai Trò</th>
                                             <th>Mật khẩu ứng dụng</th>
-                                            <?php else: if ($action == 'hocvien'): ?>
+                                            <?php break; ?>
+                                            <?php case "hocvien": ?>
                                             <th>IDHV</th>
                                             <th>Tên học viên</th>
                                             <th>Giới tính</th>
@@ -445,7 +467,25 @@
                                             <th>Quê quán</th>
                                             <th>Email</th>
                                             <th>SĐT</th>
-                                            <?php endif; endif; ?>
+                                            <?php break; ?>
+                                            <?php case "khoahoc": ?>
+                                            <th>IDKH</th>
+                                            <th>Tên khoá học</th>
+                                            <th>Tác giả</th>
+                                            <th>Mô tả</th>
+                                            <th>Giá gốc</th>
+                                            <th>Giá hiện tại</th>
+                                            <th>URL</th>
+                                            <th>Hình ảnh</th>
+                                            <?php break; ?>
+                                            <?php case "danhgia": ?>
+                                            <th>IDDG</th>
+                                            <th>IDHV</th>
+                                            <th>IDKH</th>
+                                            <th>Nội dung</th>
+                                            <th>Sao đánh giá</th>
+                                            <?php break; ?>
+                                            <?php endswitch; ?>
                                         </tr>
                                     </thead>
                                     <!-- <tfoot>
@@ -459,7 +499,8 @@
                                         </tr>
                                     </tfoot> -->
                                     <tbody>
-                                        <?php if ($action == 'taikhoan'): ?>
+                                        <?php switch ($action):
+                                              case "taikhoan": ?>
                                         <?php foreach ($account_list as $account): ?>
                                         <tr>
                                             <td><?php echo $account['Email']; ?></td>
@@ -469,7 +510,8 @@
                                             <td><?php echo $account['MatKhauUngDung']; ?></td>
                                         </tr>
                                         <?php endforeach; ?>
-                                        <?php else: if ($action == 'hocvien'): ?>
+                                        <?php break; ?>
+                                        <?php case "hocvien": ?>
                                         <?php foreach ($student_list as $student): ?>
                                         <tr>
                                             <td><?php echo $student['IDHV']; ?></td>
@@ -481,7 +523,33 @@
                                             <td><?php echo $student['SDT']; ?></td>
                                         </tr>
                                         <?php endforeach; ?>
-                                        <?php endif; endif; ?>
+                                        <?php break; ?>
+                                        <?php case "khoahoc": ?>
+                                        <?php foreach ($course_list as $course): ?>
+                                        <tr>
+                                            <td><?php echo $course['IDKH']; ?></td>
+                                            <td><?php echo $course['TenKH']; ?></td>
+                                            <td><?php echo $course['TacGiaKH']; ?></td>
+                                            <td><?php echo $course['MoTaKH']; ?></td>
+                                            <td><?php echo $course['GiaGocKH']; ?></td>
+                                            <td><?php echo $course['GiaHienTaiKH']; ?></td>
+                                            <td><?php echo $course['URLKH']; ?></td>
+                                            <td><?php echo $course['HinhAnhKH']; ?></td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                        <?php break; ?>
+                                        <?php case "danhgia": ?>
+                                        <?php foreach ($rating_list as $rating): ?>
+                                        <tr>
+                                            <td><?php echo $rating['IDDG']; ?></td>
+                                            <td><?php echo $rating['IDHV']; ?></td>
+                                            <td><?php echo $rating['IDKH']; ?></td>
+                                            <td><?php echo $rating['NoiDungDG']; ?></td>
+                                            <td><?php echo $rating['SaoDG']; ?></td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                        <?php break; ?>                                        
+                                        <?php endswitch; ?>
                                     </tbody>
                                 </table>
                             </div>
