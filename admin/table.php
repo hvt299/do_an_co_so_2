@@ -1,8 +1,15 @@
 <?php
     session_start();
     require("../model/connect_db.php");
+    require("../model/identify_db.php");
     require("../model/student_db.php");
 
+    $action = filter_input(INPUT_GET, 'action');
+    if ($action == NULL){
+        $action = 'taikhoan';
+    }
+
+    $account_list = get_account();
     $student_list = get_student();
 
     if (!isset($_COOKIE['vaitro']) || $_COOKIE['vaitro'] != "Quản lý"){
@@ -76,8 +83,10 @@
                 <div id="collapseTables" class="collapse" aria-labelledby="headingTables" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Danh sách các bảng:</h6>
-                        <a class="collapse-item" href="account_tb.php">Tài khoản</a>
-                        <a class="collapse-item" href="student_tb.php">Học viên</a>
+                        <form action="table.php" method="GET">
+                            <a class="collapse-item" href="table.php?action=taikhoan">Tài khoản</a>
+                            <a class="collapse-item" href="table.php?action=hocvien">Học viên</a>
+                        </form>
                     </div>
                 </div>
             </li>
@@ -387,7 +396,17 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Quản lý học viên</h1>
+                    <h1 class="h3 mb-2 text-gray-800">
+                        <?php
+                            if ($action == 'taikhoan'){
+                                echo "Quản lý tài khoản";
+                            }else{
+                                if ($action == 'hocvien'){
+                                    echo "Quản lý học viên";
+                                }
+                            }
+                        ?>
+                    </h1>
                     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>
@@ -395,13 +414,30 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Bảng học viên</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">
+                                <?php
+                                    if ($action == 'taikhoan'){
+                                        echo "Bảng tài khoản";
+                                    }else{
+                                        if ($action == 'hocvien'){
+                                            echo "Bảng học viên";
+                                        }
+                                    }
+                                ?>
+                            </h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <?php if ($action == 'taikhoan'): ?>
+                                            <th>Email</th>
+                                            <th>Tên</th>
+                                            <th>Password</th>
+                                            <th>Vai Trò</th>
+                                            <th>Mật khẩu ứng dụng</th>
+                                            <?php else: if ($action == 'hocvien'): ?>
                                             <th>IDHV</th>
                                             <th>Tên học viên</th>
                                             <th>Giới tính</th>
@@ -409,6 +445,7 @@
                                             <th>Quê quán</th>
                                             <th>Email</th>
                                             <th>SĐT</th>
+                                            <?php endif; endif; ?>
                                         </tr>
                                     </thead>
                                     <!-- <tfoot>
@@ -422,6 +459,17 @@
                                         </tr>
                                     </tfoot> -->
                                     <tbody>
+                                        <?php if ($action == 'taikhoan'): ?>
+                                        <?php foreach ($account_list as $account): ?>
+                                        <tr>
+                                            <td><?php echo $account['Email']; ?></td>
+                                            <td><?php echo $account['Name']; ?></td>
+                                            <td><?php echo $account['Password']; ?></td>
+                                            <td><?php echo $account['VaiTro']; ?></td>
+                                            <td><?php echo $account['MatKhauUngDung']; ?></td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                        <?php else: if ($action == 'hocvien'): ?>
                                         <?php foreach ($student_list as $student): ?>
                                         <tr>
                                             <td><?php echo $student['IDHV']; ?></td>
@@ -433,6 +481,7 @@
                                             <td><?php echo $student['SDT']; ?></td>
                                         </tr>
                                         <?php endforeach; ?>
+                                        <?php endif; endif; ?>
                                     </tbody>
                                 </table>
                             </div>

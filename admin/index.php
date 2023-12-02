@@ -76,8 +76,8 @@
                 <div id="collapseTables" class="collapse" aria-labelledby="headingTables" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Danh sách các bảng:</h6>
-                        <a class="collapse-item" href="account_tb.php">Tài khoản</a>
-                        <a class="collapse-item" href="student_tb.php">Học viên</a>
+                        <a class="collapse-item" href="table.php?action=taikhoan">Tài khoản</a>
+                        <a class="collapse-item" href="table.php?action=hocvien">Học viên</a>
                     </div>
                 </div>
             </li>
