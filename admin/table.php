@@ -97,8 +97,15 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Charts -->
             <li class="nav-item">
+                <a class="nav-link" href="chart.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Charts</span></a>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -111,10 +118,10 @@
                         <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
@@ -130,18 +137,18 @@
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Chức năng phụ
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
@@ -159,21 +166,14 @@
                         <a class="collapse-item" href="blank.html">Blank Page</a>
                     </div>
                 </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
+            </li> -->
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="table.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
-            </li>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -420,9 +420,164 @@
                             }
                         ?>
                     </h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <p class="mb-4">Trang quản lý các bảng</p>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="addaccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        <?php
+                                            switch ($action){
+                                                case 'taikhoan':
+                                                    echo "Thêm tài khoản";
+                                                    break;
+                                                case 'hocvien':
+                                                    echo "Thêm học viên";
+                                                    break;
+                                                case 'khoahoc':
+                                                    echo "Thêm khóa học";
+                                                    break;
+                                                case 'danhgia';
+                                                    echo "Thêm đánh giá";
+                                                    break;
+                                            }
+                                        ?>
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="add_process.php" method="POST">
+                                    <div class="modal-body">
+                                        <input type="hidden" name="action" value="<?php echo $action; ?>">
+                                        <?php switch ($action):
+                                                case "taikhoan": ?>
+                                                <!-- Thêm tài khoản -->
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" name="email" class="form-control" placeholder="Nhập email" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tên</label>
+                                                <input type="text" name="username" class="form-control" placeholder="Nhập username" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Password</label>
+                                                <input type="password" name="password" class="form-control" placeholder="Nhập mật khẩu" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Vai trò</label>
+                                                <input type="text" name="vaitro" class="form-control" placeholder="Nhập vai trò">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Mật khẩu ứng dụng</label>
+                                                <input type="text" name="matkhauungdung" class="form-control" placeholder="Nhập mật khẩu ứng dụng">
+                                            </div>
+                                            <?php break; ?>
+
+                                            <?php case "hocvien": ?>
+                                                <!-- Thêm học viên -->
+                                                <div class="form-group">
+                                                    <label>IDHV</label>
+                                                    <input type="text" name="idhv" class="form-control" placeholder="Nhập IDHV">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Tên học viên</label>
+                                                    <input type="text" name="username" class="form-control" placeholder="Nhập tên học viên" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Giới tính</label>
+                                                    <input type="text" name="gioitinh" class="form-control" placeholder="Nhập giới tính">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Ngày sinh</label>
+                                                    <input type="text" name="ngaysinh" class="form-control" placeholder="Nhập ngày sinh">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Quê quán</label>
+                                                    <input type="text" name="quequan" class="form-control" placeholder="Nhập quê quán">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="email" name="email" class="form-control" placeholder="Nhập email" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>SĐT</label>
+                                                    <input type="text" name="sdt" class="form-control" placeholder="Nhập số điện thoại">
+                                                </div>
+                                            <?php break; ?>
+
+                                            <?php case "khoahoc": ?>
+                                                <!-- Thêm khóa học -->
+                                                <div class="form-group">
+                                                    <label>IDKH</label>
+                                                    <input type="text" name="idkh" class="form-control" placeholder="Nhập IDKH">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Tên khóa học</label>
+                                                    <input type="text" name="tenkhoahoc" class="form-control" placeholder="Nhập tên khóa học" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Tác giả</label>
+                                                    <input type="text" name="tacgia" class="form-control" placeholder="Nhập tác giả" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Mô tả</label>
+                                                    <input type="text" name="mota" class="form-control" placeholder="Nhập mô tả" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Giá gốc</label>
+                                                    <input type="text" name="giagoc" class="form-control" placeholder="Nhập giá gốc" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Giá hiện tại</label>
+                                                    <input type="text" name="giahientai" class="form-control" placeholder="Nhập giá hiện tại" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>URL</label>
+                                                    <input type="text" name="url" class="form-control" placeholder="Nhập url" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Hình ảnh</label>
+                                                    <input type="text" name="hinhanh" class="form-control" placeholder="Nhập đường dẫn hình ảnh" required>
+                                                </div>
+                                            <?php break; ?>
+
+                                            <?php case "danhgia": ?>
+                                                <!-- Thêm đánh giá -->
+                                                <div class="form-group">
+                                                    <label>IDDG</label>
+                                                    <input type="text" name="idhv" class="form-control" placeholder="Nhập IDDG">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>IDHV</label>
+                                                    <input type="text" name="idhv" class="form-control" placeholder="Nhập IDHV" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>IDKH</label>
+                                                    <input type="text" name="idkh" class="form-control" placeholder="Nhập IDKH" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Nội dung</label>
+                                                    <input type="text" name="noidung" class="form-control" placeholder="Nhập nội dung" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Sao đánh giá</label>
+                                                    <input type="text" name="saodanhgia" class="form-control" placeholder="Nhập sao đánh giá (1-5)" required>
+                                                </div>
+                                            <?php break; ?>
+                                        <?php endswitch; ?>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                                        <button type="submit" name="add_btn" class="btn btn-primary">Lưu thay đổi</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -431,16 +586,24 @@
                                 <?php
                                     switch ($action){
                                         case 'taikhoan':
-                                            echo "Bảng tài khoản";
+                                            echo "Bảng tài khoản&emsp;";
+                                            # Button trigger modal
+                                            echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#addaccount'>Thêm tài khoản</button>";
                                             break;
                                         case 'hocvien':
-                                            echo "Bảng học viên";
+                                            echo "Bảng học viên&emsp;";
+                                            # Button trigger modal
+                                            echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#addaccount'>Thêm học viên</button>";
                                             break;
                                         case 'khoahoc':
-                                            echo "Bảng khóa học";
+                                            echo "Bảng khóa học&emsp;";
+                                            # Button trigger modal
+                                            echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#addaccount'>Thêm khóa học</button>";
                                             break;
                                         case 'danhgia';
-                                            echo "Bảng đánh giá";
+                                            echo "Bảng đánh giá&emsp;";
+                                            # Button trigger modal
+                                            echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#addaccount'>Thêm đánh giá</button>";
                                             break;
                                     }
                                 ?>
@@ -453,13 +616,16 @@
                                         <tr>
                                             <?php switch ($action):
                                                   case "taikhoan": ?>
+                                                  <!-- Bảng tài khoản -->
                                             <th>Email</th>
                                             <th>Tên</th>
                                             <th>Password</th>
                                             <th>Vai Trò</th>
                                             <th>Mật khẩu ứng dụng</th>
                                             <?php break; ?>
+
                                             <?php case "hocvien": ?>
+                                                <!-- Bảng học viên -->
                                             <th>IDHV</th>
                                             <th>Tên học viên</th>
                                             <th>Giới tính</th>
@@ -468,7 +634,9 @@
                                             <th>Email</th>
                                             <th>SĐT</th>
                                             <?php break; ?>
+
                                             <?php case "khoahoc": ?>
+                                                <!-- Bảng khóa học -->
                                             <th>IDKH</th>
                                             <th>Tên khoá học</th>
                                             <th>Tác giả</th>
@@ -478,7 +646,9 @@
                                             <th>URL</th>
                                             <th>Hình ảnh</th>
                                             <?php break; ?>
+
                                             <?php case "danhgia": ?>
+                                                <!-- Bảng đánh giá -->
                                             <th>IDDG</th>
                                             <th>IDHV</th>
                                             <th>IDKH</th>
@@ -486,6 +656,7 @@
                                             <th>Sao đánh giá</th>
                                             <?php break; ?>
                                             <?php endswitch; ?>
+                                            <th>Thao tác</th>
                                         </tr>
                                     </thead>
                                     <!-- <tfoot>
@@ -501,6 +672,7 @@
                                     <tbody>
                                         <?php switch ($action):
                                               case "taikhoan": ?>
+                                              <!-- Bảng tài khoản -->
                                         <?php foreach ($account_list as $account): ?>
                                         <tr>
                                             <td><?php echo $account['Email']; ?></td>
@@ -508,10 +680,16 @@
                                             <td><?php echo $account['Password']; ?></td>
                                             <td><?php echo $account['VaiTro']; ?></td>
                                             <td><?php echo $account['MatKhauUngDung']; ?></td>
+                                            <td>
+                                                <button type="submit" name="edit_btn" class="btn btn-success">Sửa</button>
+                                                <button type="submit" name="delete_btn" class="btn btn-danger">Xóa</button>
+                                            </td>
                                         </tr>
                                         <?php endforeach; ?>
                                         <?php break; ?>
+
                                         <?php case "hocvien": ?>
+                                            <!-- Bảng học viên -->
                                         <?php foreach ($student_list as $student): ?>
                                         <tr>
                                             <td><?php echo $student['IDHV']; ?></td>
@@ -521,10 +699,16 @@
                                             <td><?php echo $student['QueQuan']; ?></td>
                                             <td><?php echo $student['Email']; ?></td>
                                             <td><?php echo $student['SDT']; ?></td>
+                                            <td>
+                                                <button type="submit" name="edit_btn" class="btn btn-success">Sửa</button>
+                                                <button type="submit" name="delete_btn" class="btn btn-danger">Xóa</button>
+                                            </td>
                                         </tr>
                                         <?php endforeach; ?>
                                         <?php break; ?>
+
                                         <?php case "khoahoc": ?>
+                                            <!-- Bảng khóa học -->
                                         <?php foreach ($course_list as $course): ?>
                                         <tr>
                                             <td><?php echo $course['IDKH']; ?></td>
@@ -535,10 +719,16 @@
                                             <td><?php echo $course['GiaHienTaiKH']; ?></td>
                                             <td><?php echo $course['URLKH']; ?></td>
                                             <td><?php echo $course['HinhAnhKH']; ?></td>
+                                            <td>
+                                                <button type="submit" name="edit_btn" class="btn btn-success">Sửa</button>
+                                                <button type="submit" name="delete_btn" class="btn btn-danger">Xóa</button>
+                                            </td>
                                         </tr>
                                         <?php endforeach; ?>
                                         <?php break; ?>
+
                                         <?php case "danhgia": ?>
+                                            <!-- Bảng đánh giá -->
                                         <?php foreach ($rating_list as $rating): ?>
                                         <tr>
                                             <td><?php echo $rating['IDDG']; ?></td>
@@ -546,6 +736,10 @@
                                             <td><?php echo $rating['IDKH']; ?></td>
                                             <td><?php echo $rating['NoiDungDG']; ?></td>
                                             <td><?php echo $rating['SaoDG']; ?></td>
+                                            <td>
+                                                <button type="submit" name="edit_btn" class="btn btn-success">Sửa</button>
+                                                <button type="submit" name="delete_btn" class="btn btn-danger">Xóa</button>
+                                            </td>
                                         </tr>
                                         <?php endforeach; ?>
                                         <?php break; ?>                                        
@@ -589,15 +783,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn có thực sự muốn đăng xuất không?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <!-- <div class="modal-body">Chọn "Logout" để đăng xuất hoặc "Cancel" để hủy bỏ</div> -->
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="../logout.php">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy bỏ</button>
+                    <a class="btn btn-primary" href="../logout.php">Đăng xuất</a>
                 </div>
             </div>
         </div>

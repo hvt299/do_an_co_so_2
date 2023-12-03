@@ -38,17 +38,29 @@
         return $account;
     }
 
-    function add_account($email, $name, $password) {
+    function add_account($email, $name, $password, $vaitro, $matkhauungdung) {
         global $db;
         $query = 'INSERT INTO taikhoan
-                     (Email, Name, Password)
+                     (Email, Name, Password, VaiTro, MatKhauUngDung)
                   VALUES
-                     (:email, :name, :password)';
+                     (:email, :name, :password, :vaitro, :matkhauungdung)';
         $statement = $db->prepare($query);
         $statement->bindValue(':email', $email);
         $statement->bindValue(':name', $name);
         $statement->bindValue(':password', $password);
+        $statement->bindValue(':vaitro', $vaitro);
+        $statement->bindValue(':matkhauungdung', $matkhauungdung);
         $statement->execute();
         $statement->closeCursor();
+    }
+
+    function get_acc_type_number(){
+        global $db;
+        $query = 'SELECT VaiTro, COUNT(*) AS SoLuongLoaiTaiKhoan FROM taikhoan GROUP BY VaiTro';
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $acc_type_number = $statement->fetchAll();
+        $statement->closeCursor();
+        return $acc_type_number;
     }
 ?>

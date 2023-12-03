@@ -11,7 +11,7 @@
         $re_password = filter_input(INPUT_POST, "re-password");
 
         if (!empty($email) && !empty($name) && !empty($password) && !empty($re_password) && ($password == $re_password)){
-            add_account($email, $name, $password);
+            add_account($email, $name, $password, "", "");
             add_student($name, $email);
             echo "<script>alert('Đăng ký thành công!'); location.href='login.php';</script>";
         } else {
