@@ -549,7 +549,7 @@
                                                 <!-- Thêm đánh giá -->
                                                 <div class="form-group">
                                                     <label>IDDG</label>
-                                                    <input type="text" name="idhv" class="form-control" placeholder="Nhập IDDG">
+                                                    <input type="text" name="iddg" class="form-control" placeholder="Nhập IDDG">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>IDHV</label>

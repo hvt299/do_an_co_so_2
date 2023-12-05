@@ -9,15 +9,20 @@
         return $student_list;
     }
 
-    function add_student($name, $email) {
+    function add_student($student_id, $student_name, $gender, $dob, $hometown, $email, $phone) {
         global $db;
         $query = 'INSERT INTO hocvien
-                     (TenHV, Email)
+                     (IDHV, TenHV, GioiTinh, NgaySinh, QueQuan, Email, SDT)
                   VALUES
-                     (:name, :email)';
+                     (:student_id, :student_name, :gender, :dob, :hometown, :email, :phone)';
         $statement = $db->prepare($query);
-        $statement->bindValue(':name', $name);
+        $statement->bindValue(':student_id', $student_id);
+        $statement->bindValue(':student_name', $student_name);
+        $statement->bindValue(':gender', $gender);
+        $statement->bindValue(':dob', $dob);
+        $statement->bindValue(':hometown', $hometown);
         $statement->bindValue(':email', $email);
+        $statement->bindValue(':phone', $phone);
         $statement->execute();
         $statement->closeCursor();
     }

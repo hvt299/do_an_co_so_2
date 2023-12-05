@@ -37,11 +37,12 @@
         return $ratings;
     }
 
-    function add_rating($idhv, $course_id, $review_content, $star_rating){
+    function add_rating($rating_id, $student_id, $course_id, $review_content, $star_rating){
         global $db;
-        $query = 'INSERT INTO danhgia (IDHV, IDKH, NoiDungDG, SaoDG) VALUES (:idhv, :course_id, :review_content, :star_rating)';
+        $query = 'INSERT INTO danhgia (IDDG, IDHV, IDKH, NoiDungDG, SaoDG) VALUES (:rating_id, :student_id, :course_id, :review_content, :star_rating)';
         $statement = $db->prepare($query);
-        $statement->bindValue(':idhv', $idhv);
+        $statement->bindValue(':rating_id', $rating_id);
+        $statement->bindValue(':student_id', $student_id);
         $statement->bindValue(':course_id', $course_id);
         $statement->bindValue(':review_content', $review_content);
         $statement->bindValue(':star_rating', $star_rating);
