@@ -50,6 +50,15 @@
         $statement->closeCursor();
     }
 
+    function delete_rating($rating_id){
+        global $db;
+        $query = 'DELETE FROM danhgia WHERE IDDG = :rating_id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':rating_id', $rating_id);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
     function get_avg_star_rating_by_course_id($course_id) {
         global $db;
         $query = 'SELECT AVG(danhgia.SaoDG) AS avg_star_rating

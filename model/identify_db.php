@@ -54,6 +54,15 @@
         $statement->closeCursor();
     }
 
+    function delete_account($email){
+        global $db;
+        $query = 'DELETE FROM taikhoan WHERE Email = :email';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':email', $email);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
     function get_acc_type_number(){
         global $db;
         $query = 'SELECT VaiTro, COUNT(*) AS SoLuongLoaiTaiKhoan FROM taikhoan GROUP BY VaiTro';

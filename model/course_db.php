@@ -37,6 +37,15 @@
         $statement->closeCursor();
     }
 
+    function delete_course($course_id){
+        global $db;
+        $query = 'DELETE FROM khoahoc WHERE IDKH = :course_id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':course_id', $course_id);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
     function get_course_number(){
         global $db;
         $query = 'SELECT COUNT(*) AS SoLuongKhoaHoc FROM khoahoc';

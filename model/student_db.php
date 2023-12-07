@@ -27,6 +27,15 @@
         $statement->closeCursor();
     }
 
+    function delete_student($student_id){
+        global $db;
+        $query = 'DELETE FROM hocvien WHERE IDHV = :student_id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':student_id', $student_id);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
     function get_student_number(){
         global $db;
         $query = 'SELECT COUNT(*) AS SoLuongHocVien FROM hocvien';

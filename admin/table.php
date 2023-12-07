@@ -422,8 +422,8 @@
                     </h1>
                     <p class="mb-4">Trang quản lý các bảng</p>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="addaccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <!-- Add_Modal -->
+                    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -579,6 +579,68 @@
                         </div>
                     </div>
 
+                    <!-- Delete_Modal -->
+                    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        <?php
+                                            switch ($action){
+                                                case 'taikhoan':
+                                                    echo "Xóa tài khoản";
+                                                    break;
+                                                case 'hocvien':
+                                                    echo "Xóa học viên";
+                                                    break;
+                                                case 'khoahoc':
+                                                    echo "Xóa khóa học";
+                                                    break;
+                                                case 'danhgia';
+                                                    echo "Xóa đánh giá";
+                                                    break;
+                                            }
+                                        ?>
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="delete_process.php" method="POST">
+                                    <div class="modal-body">
+                                        <input type="hidden" name="action" value="<?php echo $action; ?>">
+                                        <input type="hidden" name="delete_id" id="delete_id">
+                                        <?php switch ($action):
+                                                case "taikhoan": ?>
+                                                <!-- Xóa tài khoản -->
+                                                <label>Bạn có muốn xóa tài khoản này không?</label>
+                                            <?php break; ?>
+
+                                            <?php case "hocvien": ?>
+                                                <!-- Xóa học viên -->
+                                                <label>Bạn có muốn xóa học viên này không?</label>
+                                            <?php break; ?>
+
+                                            <?php case "khoahoc": ?>
+                                                <!-- Xóa khóa học -->
+                                                <label>Bạn có muốn xóa khóa học này không?</label>
+                                            <?php break; ?>
+
+                                            <?php case "danhgia": ?>
+                                                <!-- Xóa đánh giá -->
+                                                <label>Bạn có muốn xóa đánh giá này không?</label>
+                                            <?php break; ?>
+                                        <?php endswitch; ?>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                                        <button type="submit" data-id="" name="delete_btn" class="btn btn-primary">Lưu thay đổi</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -588,22 +650,22 @@
                                         case 'taikhoan':
                                             echo "Bảng tài khoản&emsp;";
                                             # Button trigger modal
-                                            echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#addaccount'>Thêm tài khoản</button>";
+                                            echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#add'>Thêm tài khoản</button>";
                                             break;
                                         case 'hocvien':
                                             echo "Bảng học viên&emsp;";
                                             # Button trigger modal
-                                            echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#addaccount'>Thêm học viên</button>";
+                                            echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#add'>Thêm học viên</button>";
                                             break;
                                         case 'khoahoc':
                                             echo "Bảng khóa học&emsp;";
                                             # Button trigger modal
-                                            echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#addaccount'>Thêm khóa học</button>";
+                                            echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#add'>Thêm khóa học</button>";
                                             break;
                                         case 'danhgia';
                                             echo "Bảng đánh giá&emsp;";
                                             # Button trigger modal
-                                            echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#addaccount'>Thêm đánh giá</button>";
+                                            echo "<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#add'>Thêm đánh giá</button>";
                                             break;
                                     }
                                 ?>
@@ -682,7 +744,7 @@
                                             <td><?php echo $account['MatKhauUngDung']; ?></td>
                                             <td>
                                                 <button type="submit" name="edit_btn" class="btn btn-success">Sửa</button>
-                                                <button type="submit" name="delete_btn" class="btn btn-danger">Xóa</button>
+                                                <button type="submit" name="delete_btn" class="btn btn-danger delete-btn">Xóa</button>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>
@@ -701,7 +763,7 @@
                                             <td><?php echo $student['SDT']; ?></td>
                                             <td>
                                                 <button type="submit" name="edit_btn" class="btn btn-success">Sửa</button>
-                                                <button type="submit" name="delete_btn" class="btn btn-danger">Xóa</button>
+                                                <button type="submit" name="delete_btn" class="btn btn-danger delete-btn">Xóa</button>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>
@@ -721,7 +783,7 @@
                                             <td><?php echo $course['HinhAnhKH']; ?></td>
                                             <td>
                                                 <button type="submit" name="edit_btn" class="btn btn-success">Sửa</button>
-                                                <button type="submit" name="delete_btn" class="btn btn-danger">Xóa</button>
+                                                <button type="submit" name="delete_btn" class="btn btn-danger delete-btn">Xóa</button>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>
@@ -738,7 +800,7 @@
                                             <td><?php echo $rating['SaoDG']; ?></td>
                                             <td>
                                                 <button type="submit" name="edit_btn" class="btn btn-success">Sửa</button>
-                                                <button type="submit" name="delete_btn" class="btn btn-danger">Xóa</button>
+                                                <button type="submit" name="delete_btn" class="btn btn-danger delete-btn">Xóa</button>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>
@@ -813,6 +875,23 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.delete-btn').on('click', function() {
+                $('#delete').modal('show');
+
+                    $tr = $(this).closest('tr');
+                    var data = $tr.children("td").map(function() {
+                        return $(this).text();
+                    }).get();
+
+                    console.log(data);
+
+                    $('#delete_id').val(data[0]);
+            });
+        });
+    </script>
 
 </body>
 
