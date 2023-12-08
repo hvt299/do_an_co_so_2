@@ -34,7 +34,7 @@
                     echo "<script>alert('Xóa thất bại!'); location.href='table.php?action=khoahoc';</script>";
                 }
                 break;
-            case 'danhgia';
+            case 'danhgia':
                 $rating_id = filter_input(INPUT_POST, "delete_id");
                 if (!empty($rating_id)){
                     delete_rating($rating_id);

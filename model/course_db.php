@@ -37,6 +37,22 @@
         $statement->closeCursor();
     }
 
+    function edit_course($course_id, $course_name, $course_author, $course_description, $origin_price, $current_price, $url, $image) {
+        global $db;
+        $query = 'UPDATE khoahoc SET TenKH = :course_name, TacGiaKH = :course_author, MoTaKH = :course_description, GiaGocKH = :origin_price, GiaHienTaiKH = :current_price, URLKH = :url, HinhAnhKH = :image WHERE IDKH = :course_id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':course_id', $course_id);
+        $statement->bindValue(':course_name', $course_name);
+        $statement->bindValue(':course_author', $course_author);
+        $statement->bindValue(':course_description', $course_description);
+        $statement->bindValue(':origin_price', $origin_price);
+        $statement->bindValue(':current_price', $current_price);
+        $statement->bindValue(':url', $url);
+        $statement->bindValue(':image', $image);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
     function delete_course($course_id){
         global $db;
         $query = 'DELETE FROM khoahoc WHERE IDKH = :course_id';
