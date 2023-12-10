@@ -49,7 +49,31 @@
         $statement->execute();
         $statement->closeCursor();
     }
-
+    // 2 them 2 ham
+    function get_idrating_by_student_course($student_id, $course_id) {
+        global $db; 
+        $query = 'SELECT IDDG FROM danhgia WHERE IDHV = :student_id AND IDKH = :course_id';
+        $statement = $db->prepare($query);
+        $statement->bindParam(':student_id', $student_id, PDO::PARAM_INT);
+        $statement->bindParam(':course_id', $course_id, PDO::PARAM_INT);
+        $statement->execute();
+        $idrating = $statement->fetchColumn();
+        $statement->closeCursor();
+        return $idrating;
+    }
+    
+    function update_rating($rating_id, $review_content, $star_rating) {
+        global $db;
+        $query = 'UPDATE danhgia
+                  SET NoiDungDG = :review_content, SaoDG = :star_rating
+                  WHERE IDDG = :rating_id';
+        $statement = $db->prepare($query);
+        $statement->bindParam(':rating_id', $rating_id, PDO::PARAM_INT);
+        $statement->bindParam(':review_content', $review_content);
+        $statement->bindParam(':star_rating', $star_rating, PDO::PARAM_INT);
+        $result = $statement->execute();
+        $statement->closeCursor();
+    }
     function get_avg_star_rating_by_course_id($course_id) {
         global $db;
         $query = 'SELECT AVG(danhgia.SaoDG) AS avg_star_rating
