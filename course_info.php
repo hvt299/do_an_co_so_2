@@ -31,6 +31,69 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/swiper@11.0.4/swiper-bundle.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/73d99ea241.js" crossorigin="anonymous"></script>
+    <style>
+        #review_form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #review_form h2 {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+
+        #review_form form {
+            margin-top: 20px;
+        }
+
+        .review-title {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        #review_content,
+        #star_rating {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #star_rating {
+            appearance: none;
+            width: 100%;
+            height: 30px;
+            background: url('path/to/star-icon.png') repeat-x; /* Thay 'path/to/star-icon.png' bằng đường dẫn đến biểu tượng sao của bạn */
+            background-size: contain;
+            border: none;
+            outline: none;
+        }
+
+        .btn-rating {
+            background-color: #3498db;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-rating:hover {
+            background-color: #2980b9;
+        }
+
+    </style>
 </head>
 <body>
     <header>
@@ -171,6 +234,7 @@
         </section>
 
         <!-- Form Đánh Giá -->
+        
         <div id="review_form">
             <h2><i class="fa-regular fa-message" style="font-size: 30px;"></i> ĐÁNH GIÁ KHÓA HỌC</h2>
             <form action="review_process.php" method="post">
