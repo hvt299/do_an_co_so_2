@@ -54,6 +54,28 @@
         $statement->closeCursor();
     }
 
+    function edit_account($email, $name, $password, $vaitro, $matkhauungdung) {
+        global $db;
+        $query = 'UPDATE taikhoan SET Name = :name, Password = :password, VaiTro = :vaitro, MatKhauUngDung = :matkhauungdung WHERE Email = :email';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':email', $email);
+        $statement->bindValue(':name', $name);
+        $statement->bindValue(':password', $password);
+        $statement->bindValue(':vaitro', $vaitro);
+        $statement->bindValue(':matkhauungdung', $matkhauungdung);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
+    function delete_account($email){
+        global $db;
+        $query = 'DELETE FROM taikhoan WHERE Email = :email';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':email', $email);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
     function get_acc_type_number(){
         global $db;
         $query = 'SELECT VaiTro, COUNT(*) AS SoLuongLoaiTaiKhoan FROM taikhoan GROUP BY VaiTro';

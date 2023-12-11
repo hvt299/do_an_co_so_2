@@ -74,6 +74,29 @@
         $result = $statement->execute();
         $statement->closeCursor();
     }
+
+    function edit_rating($rating_id, $student_id, $course_id, $review_content, $star_rating) {
+        global $db;
+        $query = 'UPDATE danhgia SET IDHV = :student_id, IDKH = :course_id, NoiDungDG = :review_content, SaoDG = :star_rating WHERE IDDG = :rating_id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':rating_id', $rating_id);
+        $statement->bindValue(':student_id', $student_id);
+        $statement->bindValue(':course_id', $course_id);
+        $statement->bindValue(':review_content', $review_content);
+        $statement->bindValue(':star_rating', $star_rating);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
+    function delete_rating($rating_id){
+        global $db;
+        $query = 'DELETE FROM danhgia WHERE IDDG = :rating_id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':rating_id', $rating_id);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+
     function get_avg_star_rating_by_course_id($course_id) {
         global $db;
         $query = 'SELECT AVG(danhgia.SaoDG) AS avg_star_rating
