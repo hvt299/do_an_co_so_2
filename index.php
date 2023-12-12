@@ -48,10 +48,10 @@
             <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
             <?php endforeach; ?>
             <?php if (isset($_COOKIE['username'])): ?>
-                <li><a href="#" class="links"><?php echo $_COOKIE['username']; ?></a></li>
+                <li><a href="profile.php" class="links"><?php echo $_COOKIE['username']; ?></a></li>
                 <li><a href="logout.php" class="action_btn">Đăng xuất</a></li>
             <?php else: ?>
-                <li><a href="#" class="cart_btn"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: darkgray;"></i></a></li>
+                <li><a href="profile.php" class="cart_btn"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: darkgray;"></i></a></li>
                 <li><a href="login.php" class="action_btn">Đăng nhập</a></li>
             <?php endif; ?>
         </div>
