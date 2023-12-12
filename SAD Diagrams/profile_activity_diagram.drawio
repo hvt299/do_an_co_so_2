@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-12-11T07:30:47.910Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="HTrP-PEbiRrFSS0aJl9t" version="22.1.2" type="device">
+<mxfile host="Electron" modified="2023-12-12T18:25:14.611Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="oLhjdJXjteBdCcA-B80h" version="22.1.2" type="device">
   <diagram name="Trang-1" id="_k-Chzy2qT7Ti57JTN79">
-    <mxGraphModel dx="552" dy="647" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="649" dy="761" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -21,10 +21,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="LRtbAlsSm4fegoS5Vz1c-28" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#ff0000;" parent="1" vertex="1">
-          <mxGeometry x="363" y="867" width="30" height="30" as="geometry" />
+          <mxGeometry x="363" y="800" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="rPQ6iwXM4GGpc_3LtgXS-7" value="Hiển thị thông báo lỗi" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" parent="1" vertex="1">
-          <mxGeometry x="109" y="587" width="120" height="40" as="geometry" />
+          <mxGeometry x="109" y="547" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="rPQ6iwXM4GGpc_3LtgXS-15" value="" style="rhombus;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" parent="1" vertex="1">
           <mxGeometry x="338" y="447" width="80" height="40" as="geometry" />
@@ -50,7 +50,7 @@
           <mxGeometry x="109" y="447" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="rPQ6iwXM4GGpc_3LtgXS-23" value="" style="rhombus;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" parent="1" vertex="1">
-          <mxGeometry x="338" y="707" width="80" height="40" as="geometry" />
+          <mxGeometry x="338" y="610" width="80" height="40" as="geometry" />
         </mxCell>
         <mxCell id="rPQ6iwXM4GGpc_3LtgXS-24" value="Sai" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="rPQ6iwXM4GGpc_3LtgXS-23" target="rPQ6iwXM4GGpc_3LtgXS-7" edge="1">
           <mxGeometry x="-0.8581" relative="1" as="geometry">
@@ -65,13 +65,16 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="rPQ6iwXM4GGpc_3LtgXS-27" value="Hiển thị thông báo gửi thành công" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" parent="1" vertex="1">
-          <mxGeometry x="318" y="787" width="120" height="40" as="geometry" />
+        <mxCell id="rPQ6iwXM4GGpc_3LtgXS-27" value="Hiển thị thông báo thay đổi thành công" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" parent="1" vertex="1">
+          <mxGeometry x="318" y="720" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="rPQ6iwXM4GGpc_3LtgXS-28" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="rPQ6iwXM4GGpc_3LtgXS-27" target="LRtbAlsSm4fegoS5Vz1c-28" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="378" y="887" as="targetPoint" />
+            <mxPoint x="378" y="820" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="-o_jx0aznVXDR0Q0G4Yo-2" value="[Người dùng điền đầy đủ thông tin hợp lệ vào form]" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="379" y="540" width="300" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
