@@ -63,7 +63,7 @@
                 </div>
                 <div class="sub-container">
                     <div class="teams">
-                        <img src="images/lap-trinh-vien.png" alt="">
+                        <img src="images/vietthai.jpg" alt="">
                         <div class="name">Hứa Viết Thái</div>
                         <div class="role">Developer</div>
                         <div class="about">
@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="teams">
-                        <img src="images/lap-trinh-vien.png" alt="">
+                        <img src="images/theanh.jpg" alt="">
                         <div class="name">Phạm Thế Anh</div>
                         <div class="role">Developer</div>
                         <div class="about">
