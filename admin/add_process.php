@@ -35,19 +35,11 @@
                 $email = filter_input(INPUT_POST, 'email');
                 $phone = filter_input(INPUT_POST, "sdt");
                 
-
-                if (empty($student_name) || empty($email)){
-                    echo "<script>alert('Thêm thất bại!'); location.href='table.php?action=hocvien';</script>";
-                    return;
-                }
-
-                try {
+                if (!empty($student_name) && !empty($email)){
                     add_student($student_id, $student_name, $gender, $dob, $hometown, $email, $phone);
-                    // create account for hocvien with default pass , hoc vien dang nhap co the doi mat khau
                     echo "<script>alert('Thêm thành công!'); location.href='table.php?action=hocvien';</script>";
-                } catch (ErrorException $e) {
+                } else {
                     echo "<script>alert('Thêm thất bại!'); location.href='table.php?action=hocvien';</script>";
-                    return;
                 }
                 break;
             case 'khoahoc':
