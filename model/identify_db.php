@@ -9,7 +9,19 @@
         return $account_list;
     }
 
-    // sửa đổi
+    // Hàm lấy tài khoản dựa trên email
+    function get_account_by_email($email) {
+        global $db;
+        $query = 'SELECT * FROM taikhoan WHERE Email = :email';
+        $statement = $db->prepare($query);
+        $statement->bindValue(":email", $email);
+        $statement->execute();
+        $account = $statement->fetch(PDO::FETCH_ASSOC);
+        $statement->closeCursor();
+        return $account;
+    }
+
+    // Hàm lấy tài khoản dành cho học viên
     function get_account_by_email_password($email, $password) {
         global $db;
         $query = 'SELECT taikhoan.*, hocvien.IDHV
@@ -25,6 +37,7 @@
         return $account;
     }
 
+    // Hàm lấy tài khoản dành cho quản lý (admin)
     function get_account_by_email_password_2($email, $password) {
         global $db;
         $query = 'SELECT * FROM taikhoan

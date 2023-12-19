@@ -1,20 +1,41 @@
 <?php
-require("model/connect_db.php");
-require("login_process.php");
-require("model/student_db.php");
-// $idhv = null;
-if(isset($_COOKIE['idhv'])){
-    $idhv = $_COOKIE['idhv'];
-}
-$student = get_student_by_id($idhv);
-if($student){
-    $tenhv = $student['TenHV'];
-    $gioiTinh = $student['GioiTinh'];
-    $ngaySinh = $student['NgaySinh'];
-    $queQuan = $student['QueQuan'];
-    $email = $student['Email'];
-    $sdt =  $student['SDT'];
-}
+    // Khởi động session
+    session_start();
+
+    // Kết nối database và các bảng
+    require("model/connect_db.php");
+    require("model/menu_db.php");
+    require("model/course_db.php");
+    require("model/rating_db.php");
+    require("login_process.php");
+    require("model/student_db.php");
+    require("model/identify_db.php");
+
+    // Lấy dữ liệu từ các bảng
+    $menu_list = get_menu();
+    $course_list = get_course();
+    $rating_list = get_rating();
+
+    if(isset($_COOKIE['idhv'])){
+        $idhv = $_COOKIE['idhv'];
+        $student = get_student_by_id($idhv);
+        if($student){
+            $tenhv = $student['TenHV'];
+            $gioiTinh = $student['GioiTinh'];
+            $ngaySinh = $student['NgaySinh'];
+            $queQuan = $student['QueQuan'];
+            $email = $student['Email'];
+            $sdt =  $student['SDT'];
+        }
+        $account = get_account_by_email($email);
+        if ($account){
+            $password = $account['Password'];
+        }
+    }
+
+    if (!isset($_COOKIE['username'])){
+        echo "<script>alert('Vui lòng đăng nhập để tiếp tục!');location.href='login.php';</script>";
+    }else{
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,33 +43,41 @@ if($student){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông tin tài khoản</title>
+    <title>Hồ sơ cá nhân | COURSE ONLINE - Bring Course To You!</title>
+    <!-- CSS tự làm -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="Profile Template/style1.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- JS Font Awesome (Icon) -->
+    <script src="https://kit.fontawesome.com/73d99ea241.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <!-- Phần header (menu) -->
+    <?php include("view/header.php"); ?>
     <form action="profile_process.php" method="post">
     <div class="container light-style flex-grow-1 container-p-y">
         <h4 class="font-weight-bold py-3 mb-4">
-            Account settings
+            Thay đổi hồ sơ thông tin cá nhân
         </h4>
         <div class="card overflow-hidden">
             <div class="row no-gutters row-bordered row-border-light">
                 <div class="col-md-3 pt-0">
                     <div class="list-group list-group-flush account-settings-links">
                         <a class="list-group-item list-group-item-action active" data-toggle="list"
-                            href="#account-general">Thông tin tài khoản</a>
+                            href="#account-general">Thông tin cá nhân</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#account-info">Thông tin tài khoản</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list"
                             href="#account-change-password">Đổi mật khẩu</a>
-                        <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#account-info">Thông tin riêng</a>
-                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                        <!-- <a class="list-group-item list-group-item-action" data-toggle="list"
                             href="#account-social-links">Mạng Xã Hội</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list"
                             href="#account-connections">Connections</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list"
-                            href="#account-notifications">Notifications</a>
+                            href="#account-notifications">Notifications</a> -->
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -59,26 +88,22 @@ if($student){
                                     class="d-block ui-w-80">
                                 <div class="media-body ml-4">
                                     <label class="btn btn-outline-primary">
-                                        Upload new photo
+                                        Tải ảnh lên
                                         <input type="file" class="account-settings-fileinput">
                                     </label> &nbsp;
-                                    <button type="button" class="btn btn-default md-btn-flat">Reset</button>
+                                    <button type="button" class="btn btn-default md-btn-flat">Hủy bỏ</button>
                                     <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
                                 </div>
                             </div>
                             <hr class="border-light m-0">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label class="form-label">Id Học Viên:</label>
+                                    <label class="form-label">ID học viên:</label>
                                     <input name="idhv" type="text" class="form-control mb-1" value="<?php echo $idhv?>" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Tên học Viên:</label>
+                                    <label class="form-label">Tên học viên:</label>
                                     <input name="tenhv" type="text" class="form-control" value="<?php echo $tenhv?>">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Ngày Sinh:</label>
-                                    <input name="ngaySinh" type="text" class="form-control mb-1" value="<?php echo $ngaySinh?>">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Giới tính:</label>
@@ -88,9 +113,17 @@ if($student){
                                         <option value="Khác" <?php echo ($gioiTinh == 'Khác') ? 'selected' : ''; ?>>Khác</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label class="form-label">Ngày sinh:</label>
+                                    <input name="ngaySinh" type="text" class="form-control mb-1" value="<?php echo $ngaySinh?>">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Quê quán:</label>
+                                    <input name="queQuan" type="text" class="form-control" value="<?php echo $queQuan?>">
+                                </div>
 
                                 <div class="form-group">
-                                    <label class="form-label">E-mail:</label>
+                                    <label class="form-label">Email:</label>
                                     <input name="Email" type="text" class="form-control mb-1" value="<?php echo $email?>">
                                     <div class="alert alert-warning mt-3">
                                         Your email is not confirmed. Please check your inbox.<br>
@@ -100,10 +133,6 @@ if($student){
                                 <div class="form-group">
                                     <label class="form-label">Điện thoại:</label>
                                     <input name="soDienThoai" type="text" class="form-control" value="<?php echo $sdt?>">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Quê quán:</label>
-                                    <input name="queQuan" type="text" class="form-control" value="<?php echo $queQuan?>">
                                 </div>
                             </div>
                         </div>
@@ -125,6 +154,28 @@ if($student){
                         </div>
                         <div class="tab-pane fade" id="account-info">
                             <div class="card-body pb-2">
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="text" class="form-control" value="<?php echo $email; ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Tên người dùng</label>
+                                    <input type="text" class="form-control" value="<?php echo $_COOKIE['username']; ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Mật khẩu</label>
+                                    <input type="password" class="form-control" value="<?php echo $password; ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Vai trò</label>
+                                    <input type="text" class="form-control" value="<?php echo $_COOKIE['vaitro']; ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Mật khẩu ứng dụng</label>
+                                    <input type="text" class="form-control" value="<?php echo $_COOKIE['matkhauungdung']; ?>">
+                                </div>
+                            </div>
+                            <!-- <div class="card-body pb-2">
                                 <div class="form-group">
                                     <label class="form-label">Bio</label>
                                     <textarea class="form-control"
@@ -180,7 +231,7 @@ if($student){
                                     <label class="form-label">Instagram</label>
                                     <input type="text" class="form-control" value="https://www.instagram.com/user">
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="tab-pane fade" id="account-connections">
                             <div class="card-body">
@@ -285,10 +336,15 @@ if($student){
         </div>
         <div class="text-right mt-3">
             <button type="submit" class="btn btn-primary">Lưu thay đổi</button>&nbsp;
-            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="button" class="btn btn-default">Hủy bỏ</button>
         </div>
     </div>
     </form>
+
+    <!-- Phần footer -->
+    <main>
+        <?php include("view/footer.php"); ?>
+    </main>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -298,4 +354,4 @@ if($student){
 </body>
 
 </html>
-
+<?php } ?>

@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $queQuan = $_POST['queQuan'];
     $email = $_POST['Email'];
     $sdt =  $_POST['soDienThoai'];
-    update_profile_student($idhv, $tenhv, $gioiTinh, $ngaySinh, $queQuan, $email, $sdt);
+    edit_student($idhv, $tenhv, $gioiTinh, $ngaySinh, $queQuan, $email, $sdt);
     echo "<script>alert('Chỉnh sửa thành công!'); location.href='profile.php';</script>";
 }
 

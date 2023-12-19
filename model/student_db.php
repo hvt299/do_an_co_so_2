@@ -52,8 +52,8 @@
         try{
             $query = 'UPDATE hocvien SET TenHV = :student_name, GioiTinh = :gender, NgaySinh = :dob, QueQuan = :hometown, Email = :email, SDT = :phone WHERE IDHV = :student_id';
             $statement = $db->prepare($query);
-            $statement->bindValue(':student_id', $student_id, PDO::PARAM_STR);
-            $statement->bindValue(':student_name', $student_name, PDO::PARAM_INT);
+            $statement->bindValue(':student_id', $student_id, PDO::PARAM_INT);
+            $statement->bindValue(':student_name', $student_name, PDO::PARAM_STR);
             $statement->bindValue(':gender', $gender, PDO::PARAM_STR);
             $statement->bindValue(':dob', $dob, PDO::PARAM_STR);
             $statement->bindValue(':hometown', $hometown, PDO::PARAM_STR);

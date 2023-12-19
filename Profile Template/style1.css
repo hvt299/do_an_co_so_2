@@ -9,9 +9,9 @@ body {
 }
 
 .btn-default {
-    border-color: rgba(24, 28, 33, 0.1);
-    background  : rgba(0, 0, 0, 0);
-    color       : #4E5155;
+    border-color: rgba(24, 28, 33, 0.1) !important;
+    background  : rgba(0, 0, 0, 0) !important;
+    color       : #4E5155 !important;
 }
 
 label.btn {

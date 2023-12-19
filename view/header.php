@@ -1,9 +1,9 @@
 <header>
     <div class="navbar">
-        <div class="logo"><a href="index.php">COURSE ONLINE</a></div>
+        <div class="logo"><a href="index.php" class="logo">COURSE ONLINE</a></div>
         <ul class="links">
             <?php foreach ($menu_list as $menu) : ?>
-                <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
+                <li><a href="<?php echo $menu['URLMenu']; ?>" class="menu_link"><?php echo $menu['TenMenu']; ?></a></li>
             <?php endforeach; ?>
         </ul>
         <ul class="links">
@@ -23,7 +23,7 @@
 
     <div class="dropdown_menu">
         <?php foreach ($menu_list as $menu) : ?>
-            <li><a href="<?php echo $menu['URLMenu']; ?>"><?php echo $menu['TenMenu']; ?></a></li>
+            <li><a href="<?php echo $menu['URLMenu']; ?>" class="menu_link"><?php echo $menu['TenMenu']; ?></a></li>
         <?php endforeach; ?>
         <?php if (isset($_COOKIE['username'])) : ?>
             <li><a href="cart.php" class="cart_btn"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: darkgray;"></i></a></li>

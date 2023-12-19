@@ -30,8 +30,12 @@ li {
 
 a {
     text-decoration: none !important;
-    color: #fff !important;
+    /* color: #fff !important; */
     font-size: 1rem;
+}
+
+a.menu_link, a.logo, a.links {
+  color: #fff !important;
 }
 
 a:hover {
